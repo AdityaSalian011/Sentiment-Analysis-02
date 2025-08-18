@@ -1,0 +1,1 @@
+web: gunicorn sent_analysis.wsgi

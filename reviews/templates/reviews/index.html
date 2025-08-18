@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer" 
+    />
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="w-full min-h-screen bg-gradient-to-t from-[hsl(0,0%,90%)] via-[hsl(0,0%,85%)] to-[hsl(0,0%,80%)]">
+    <!-- navbar section starts here -->
+    <nav class="fixed top-0 left-0 min-h-screen w-12 sm:w-16 md:w-20 p-1 sm:p-2 md:p-3 bg-[hsl(0,0%,90%)] border border-[hsl(0,0%,90%)] border-r-[hsl(0,0%,100%)] space-y-1 sm:space-y-2">
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-money-bill-wave text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-wallet text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-chart-line text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>   
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-key text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>  
+    </nav>
+    <!-- navbar ends here  -->
+
+    <!-- main body content  -->
+    <main class="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] m-12 sm:m-16 md:m-20 p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-8 md:space-y-10">
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Food & Beverages</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-3">
+            <a href="{% url 'reviews' 'mamledar-misal' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+            <a href="{% url 'reviews' 'food-town' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+            <a href="{% url 'reviews' 'hotel-mavlan' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+        </div>
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Shopping & Entertainment</h2>
+        <div class="grid grid-cols-2 gap-x-2 gap-y-3">
+            <a href="{% url 'reviews' 'korum-mall' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+            <a href="{% url 'reviews' 'viviana-mall' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+        </div>
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Health, Fitness & Lifestyle</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-3">
+            <a href="{% url 'reviews' 'golds-gym' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+            <a href="{% url 'reviews' 'decathlon-sports' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+            <a href="{% url 'reviews' 'jupyter-hospital' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </a>
+        </div>
+        <!-- <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Services & Startups</h2>
+        <div class="grid grid-cols-2 gap-x-2 gap-y-3">
+            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </div>
+            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </div>
+        </div>
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Education</h2>
+        <div class="grid grid-cols-1 gap-x-2 gap-y-3">
+            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
+                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+            </div>
+        </div> -->
+    </main>
+</body>
+</html>

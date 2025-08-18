@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer" 
+    />
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="w-full min-h-screen bg-gradient-to-t from-[hsl(0,0%,90%)] via-[hsl(0,0%,85%)] to-[hsl(0,0%,80%)]">
+    <!-- navbar section starts here -->
+    <nav class="fixed top-0 left-0 min-h-screen w-12 sm:w-16 md:w-20 p-1 sm:p-2 md:p-3 bg-[hsl(0,0%,90%)] border border-[hsl(0,0%,90%)] border-r-[hsl(0,0%,100%)] space-y-1 sm:space-y-2">
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-money-bill-wave text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-wallet text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-chart-line text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>   
+        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
+            <i class="fa-solid fa-key text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
+        </a>  
+    </nav>
+
+    
+    <div class="fixed bottom-0 right-0 mb-2 mr-4">
+        <button id="add-button" class="w-[300px] bg-[hsl(0,0%,90%)] hover:bg-gradient-to-t from-[hsl(0,0%,90%)] to-[hsl(0,0%,85%)] text-lg font-semibold px-5 py-2 border border-[hsl(0,0%,70%)] border-t-[hsl(0,0%,50%)] rounded-lg flex items-center justify-start">
+            <i class="fa-solid fa-circle-plus mr-2"></i>
+            Add Review
+        </button>
+    </div>
+
+    <div id="overlay" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+        <form id="review-form" method="post" 
+            class="w-[90%] max-w-md bg-white rounded-2xl shadow-lg p-6 space-y-6">
+            {% csrf_token %}
+            <!-- Heading -->
+            <h2 class="text-2xl font-bold text-gray-800 text-center">
+                Add a Review
+            </h2>
+            <!-- Input -->
+            <div>
+                <input type="text" name="review" id="add-review"
+                    placeholder="Write your review here..."
+                    class="w-full p-3 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    autocomplete="off" 
+                    maxlength="512" 
+                    required>
+            </div>
+            <!-- Buttons -->
+            <div class="flex space-x-3">
+                <button id="submit-btn" type="submit" 
+                    class="w-1/2 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+                    Submit
+                </button>
+                <button id="back-btn" type="button" 
+                    class="w-1/2 py-2 rounded-lg bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+    <main class="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] m-12 sm:m-16 md:m-20 p-4 space-y-10">
+        
+        {% for entry in entries %}
+        <div class="w-full h-full divide-y divide-gray-900 divide-solid space-y-4 px-4"> 
+            <!-- user logo and name div  -->
+            <div class="flex items-center space-x-3">
+                <img class="w-[50px] h-[50px]" src="{% static 'reviews/images/default-user-icon.png' %}" alt="">
+                <p class="text-center text-2xl font-bold tracking-wide underline">{{entry.username}}</p>
+            </div>
+            <!-- user review/comment div  -->
+            <div class="pt-4 space-y-2">
+                <p class="text-xl font-bold tracking-wide">Review:</p>
+                <p class="text-sm md:text-md">{{entry.review}}</p>
+            </div>
+            <!-- check sentiment of user review btn  -->
+            <div class="py-2 px-4">
+                <button id="show-analysis-btn-{{entry.id}}" onclick="showAnalysis({{entry.id}})" class="w-full text-[hsl(220,100%,50%)] underline flex font-semibold tracking-wider" type="button">Check Sentiment</button>
+    
+                <!-- button to reset if clicked  -->
+                <button id="hide-analysis-btn-{{entry.id}}" class="w-full text-[hsl(220,100%,50%)] underline hidden font-semibold tracking-wider" type="button">Remove Analysis</button>
+    
+                <div id="show-analysis-{{entry.id}}" class="w-full hidden flex-col md:flex-row pt-4 space-y-3 md:space-y-0">
+                    <div class="w-full space-x-2 flex">
+                        <p class="text-lg md:text-xl font-bold">Sentiment: </p>
+                        <p class="text-lg font-semibold tracking-wide">{{entry.sentiment}}</p>
+                    </div>
+
+                    <div class="w-full space-y-2"> 
+                        <p class="text-lg md:text-xl font-bold tracking-wide">Feedback: </p>
+                        <p class="text-md font-semibold">{{entry.feedback1}}</p>
+                        {% if entry.feedback2 %}
+                            <p class="text-md font-semibold">{{entry.feedback2}}</p>
+                        {% endif %}
+                        {% if entry.feedback3 %}
+                            <p class="text-md font-semibold">{{entry.feedback3}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+            
+    </main>
+</body>
+<script src="{% static 'reviews/js/show_reviews.js' %}"></script>
+</html>
