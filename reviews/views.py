@@ -5,6 +5,7 @@ from .forms import ReviewForm
 import pandas as pd
 import os
 
+from django.db.models import Count, Q
 # Create your views here.
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,4 +87,13 @@ def show_reviews(request, company):
         form = ReviewForm()
     
     entries = Review.objects.filter(company=company).order_by('-id')
-    return render(request, 'reviews/show_reviews.html', {'entries':entries, 'form':form})
+    return render(request, 'reviews/show_reviews.html', {'entries':entries, 'form':form, 'company': company})
+
+def show_dashboard(request, company):
+    total_reviews = Review.objects.filter(company=company).aggregate(
+        pos_reviews = Count('id', filter=Q(sentiment='POSITIVE')),
+        neg_reviews = Count('id', filter=Q(sentiment='NEGATIVE')),
+        neutral_reviews = Count('id', filter=Q(sentiment='NEUTRAL'))
+    )
+
+    return render(request, 'reviews/dashboard.html', {'total_reviews': total_reviews, 'company':company})
