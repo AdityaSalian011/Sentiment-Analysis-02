@@ -46,46 +46,117 @@
             <div class="min-h-[100px] bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
                 <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
                     <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Positive Reviews</p>
-                    <p class="text-[hsl(120,100%,39%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.pos_reviews}}</p>
+                    <p class="text-[hsl(145,63%,42%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.pos_reviews}}</p>
                 </div>
             </div>
             <!-- negative review count -->
             <div class="min-h-[100px] bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
                 <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
                     <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Negative Reviews</p>
-                    <p class="text-[hsl(0,100%,39%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neg_reviews}}</p>
+                    <p class="text-[hsl(0,74%,51%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neg_reviews}}</p>
                 </div>
             </div>
             <!-- neutral review count -->
             <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
                 <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
                     <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Neutral Reviews</p>
-                    <p class="text-[hsl(0,0%,39%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neutral_reviews}}</p>
+                    <p class="text-[hsl(210,16%,45%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neutral_reviews}}</p>
                 </div>
             </div>
             <!-- negative, neutral, positive graph -->
-            <div class="min-h-[100px] sm:col-span-2 lg:col-span-4 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p></p>
-                    <p></p>
+            <div class="h-[300px] sm:h-[350px] md:h-[500px] sm:col-span-2 lg:col-span-4 p-4 sm:p-6 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl flex flex-col">
+                <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-2xl font-semibold tracking-wide leading-tight text-center mb-4">Sentiment BarPlot</p>
+                <div class="flex-1 flex items-center justify-center overflow-hidden">
+                    <canvas id="senti-barplot" class="w-full h-full"></canvas>
                 </div>
             </div>
             <!-- key positive words -->
             <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
                 <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p></p>
-                    <p></p>
+                    <p>Keywords from Positive Review</p>
+                    <p>In progress...</p>
                 </div>
             </div>
             <!-- key negative words -->
             <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
                 <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p></p>
-                    <p></p>
+                    <p>Keywords from Negative Review</p>
+                    <p>In Progress..</p>
                 </div>
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let companyName = "{{ company }}";
+            let posReviewCount = {{ total_reviews.pos_reviews|default:0 }};
+            let negReviewCount = {{ total_reviews.neg_reviews|default:0 }};
+            let neutralReviewCount = {{ total_reviews.neutral_reviews|default:0 }};
+            
+            let data = {
+                labels : ['Positive', 'Negative', 'Neutral'],
+                datasets : [{
+                    label : `Review Counts for ${companyName}`,
+                    data : [posReviewCount, negReviewCount, neutralReviewCount],
+                    backgroundColor : [
+                        'hsla(145,63%,42%,0.6)',
+                        'hsla(0,74%,51%,0.6)',
+                        'hsla(210,16%,45%,0.6)'
+                    ],
+                    borderColor : [
+                        'hsla(145,63%,42%,1)',
+                        'hsla(0,74%,51%,1)',
+                        'hsla(210,16%,45%,1)'
+                    ],
+                    borderWidth : 2,
+                    borderRadius : 10,
+                    hoverBackgroundColor : [
+                        'hsla(145,63%,42%,0.9)',
+                        'hsla(0,74%,51%,0.9)',
+                        'hsla(210,16%,45%,0.9)'
+                    ],
+                }]
+            }
 
+            let options = {
+                responsive : true,
+                plugins : {
+                    legend : {
+                        display : false
+                    }
+                },
+                scales : {
+                    x : {
+                        ticks : {
+                            font : {
+                                size : 14,
+                                weight : '600'
+                            },
+                            color : 'hsl(0,0%,20%)'
+                        }
+                    },
+                    y : {
+                        beginAtZero : true,
+                        ticks : {
+                            font : {
+                                size : 14,
+                                weight : '600'
+                            },
+                            color : 'hsl(0,0%,20%)'
+                        }
+                    }
+                }
+            }
+
+            let ctx = document.getElementById('senti-barplot').getContext('2d');
+
+            let mySentimentBarplot = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: options
+            });
+        })
+    </script>
 </body>
 </html>

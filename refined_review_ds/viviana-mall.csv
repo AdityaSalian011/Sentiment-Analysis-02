@@ -1,27 +1,27 @@
-,name,reviews,sentiment,feedback1,feedback2,feedback3
-0,saurabh chaugule,"Visiting the shopping center always feels like a fun outing, offering a wide variety of stores to explore. You can easily spend hours browsing through different sections, from clothing to electronics. Finding a place to eat is never a problem with all the food court options and restaurants available. Overall, it is a great place to go for shopping and entertainment.",POSITIVE,The shopping center offers a wide variety of stores to explore.,You can easily spend hours browsing through different sections.,Finding a place to eat is never a problem with food court options.
-1,Pooja Gaikwad,All brands available,NEUTRAL,The store offers a wide range of brands.,The customer can find all brands available.,The store has a diverse selection of brands.
-2,Jatin Chhimwal,Best place for shopping the branded items you get all the famous stores and Brands in the mall,POSITIVE,The mall offers branded items.,You can find famous stores there.,The mall has all the famous brands.
-3,Hitesh Prithiani,"Built after fmaous Korum mall in Thane
+,Unnamed: 0,name,reviews,sentiment,feedback1,feedback2,feedback3,pos_keywords,neg_keywords
+0,0,saurabh chaugule,"Visiting the shopping center always feels like a fun outing, offering a wide variety of stores to explore. You can easily spend hours browsing through different sections, from clothing to electronics. Finding a place to eat is never a problem with all the food court options and restaurants available. Overall, it is a great place to go for shopping and entertainment.",POSITIVE,The shopping center offers a wide variety of stores to explore.,You can easily spend hours browsing through different sections.,Finding a place to eat is never a problem with food court options.,"['easily spend hours', 'easily spend']",
+1,1,Pooja Gaikwad,All brands available,NEUTRAL,The store offers a wide range of brands.,The customer can find all brands available.,The store has a diverse selection of brands.,,
+2,2,Jatin Chhimwal,Best place for shopping the branded items you get all the famous stores and Brands in the mall,POSITIVE,The mall offers branded items.,You can find famous stores there.,The mall has all the famous brands.,"['mall offers branded', 'mall offers', 'offers branded items', 'offers branded', 'famous stores']",
+3,3,Hitesh Prithiani,"Built after fmaous Korum mall in Thane
 Has huge space than it.
-Is now famous one",NEUTRAL,The mall is built after famous Korum mall in Thane.,The mall has huge space than it.,The mall is now famous one.
-4,Harrish Kumar Doulatramani,"Beautiful, vast, never ending, premium brands all under one roof in Thane.",POSITIVE,The customer finds beautiful brands under one roof.,The customer discovers vast premium brands in Thane.,The customer enjoys never ending shopping experience in Thane.
-5,Janvi Thakkar,Too much rush,NEGATIVE,The customer feels overwhelmed by the rush.,The customer is frustrated with the fast pace.,The customer dislikes the chaotic atmosphere.
-6,Akshit Shah,Best arcade,POSITIVE,The arcade offers an impressive gaming experience.,The games are well-maintained and fun to play.,The staff is friendly and welcoming to customers.
-7,Dr. Lukesh Parida,Average,NEUTRAL,The reviewer found the food to be average.,The restaurant served a variety of dishes.,The atmosphere was pleasant and welcoming.
-8,gohil abhishek,Its good,POSITIVE,The reviewer finds the experience good.,,
-9,Ayush Desale,Nice place..,POSITIVE,The place is nice.,,
-10,Gopal Poojary,Very nice Fitting and beautiful,POSITIVE,The fitting is very nice.,,
-11,Suresh Hindurao,Very specious and ambient Mall amidst the city,NEUTRAL,The mall is very specious.,The mall is ambient.,The mall is amidst the city.
-12,Hemanth Nambiar,All best brand under one roof,POSITIVE,The brand offers a wide range of products.,The customer can find all the best brands under one roof.,The store provides a convenient shopping experience.
-13,Solani,Nice staff,POSITIVE,The staff is nice.,,
-14,Priya Gupta,Nice food and nonveg sandwich tersy,POSITIVE,The food is nice.,,
-15,hitten shah,Very good mall in Thane,POSITIVE,The mall in Thane is very good.,,
-16,RITIK RANJAN,Worth it,NEUTRAL,The reviewer considers the experience worth it.,The reviewer thinks the experience is valuable.,The reviewer believes the experience is worthwhile.
-17,RUFI MALAVI,I love it,POSITIVE,The customer loves it.,,
-18,Deba Prasad,Nice place,POSITIVE,The place is nice.,,
-19,Abu Sahma,Nice palace,POSITIVE,The palace is nice.,,
-20,Harrish Raja,lovely place to visit dine and shop,POSITIVE,The lovely place is great.,The customers can dine and shop.,The place is a must-visit.
-21,Sanket Deshpande,"Best Mall in thane.. lots of shops, brands,  Food and entertainment everything at one place",POSITIVE,The mall offers a variety of shops and brands.,The mall has a range of food options available.,The mall provides entertainment options as well.
-22,Abhijit Jadhav,"One of the best mall on the central side. Got all great brands, restaurants and ample parking space",POSITIVE,The mall has great brands.,The mall has ample parking space.,The mall is on the central side.
-23,Sourabh Solanki,Best place,POSITIVE,The restaurant is called Best place.,The customers love the food here.,The atmosphere is very pleasant.
+Is now famous one",NEUTRAL,The mall is built after famous Korum mall in Thane.,The mall has huge space than it.,The mall is now famous one.,,
+4,4,Harrish Kumar Doulatramani,"Beautiful, vast, never ending, premium brands all under one roof in Thane.",POSITIVE,The customer finds beautiful brands under one roof.,The customer discovers vast premium brands in Thane.,The customer enjoys never ending shopping experience in Thane.,"['beautiful brands roof', 'finds beautiful brands', 'customer finds beautiful', 'beautiful brands', 'finds beautiful']",
+5,5,Janvi Thakkar,Too much rush,NEGATIVE,The customer feels overwhelmed by the rush.,The customer is frustrated with the fast pace.,The customer dislikes the chaotic atmosphere.,,"['customer frustrated fast', 'customer frustrated', 'frustrated fast pace', 'frustrated fast']"
+6,6,Akshit Shah,Best arcade,POSITIVE,The arcade offers an impressive gaming experience.,The games are well-maintained and fun to play.,The staff is friendly and welcoming to customers.,"['arcade offers impressive', 'arcade offers', 'offers impressive gaming', 'impressive gaming experience', 'impressive gaming']",
+7,7,Dr. Lukesh Parida,Average,NEUTRAL,The reviewer found the food to be average.,The restaurant served a variety of dishes.,The atmosphere was pleasant and welcoming.,,
+8,8,gohil abhishek,Its good,POSITIVE,The reviewer finds the experience good.,,,"['experience good', 'finds experience good']",
+9,9,Ayush Desale,Nice place..,POSITIVE,The place is nice.,,,['place nice'],
+10,10,Gopal Poojary,Very nice Fitting and beautiful,POSITIVE,The fitting is very nice.,,,['fitting nice'],
+11,11,Suresh Hindurao,Very specious and ambient Mall amidst the city,NEUTRAL,The mall is very specious.,The mall is ambient.,The mall is amidst the city.,,
+12,12,Hemanth Nambiar,All best brand under one roof,POSITIVE,The brand offers a wide range of products.,The customer can find all the best brands under one roof.,The store provides a convenient shopping experience.,"['brand offers', 'customer best brands', 'best brands roof', 'best brands', 'customer best']",
+13,13,Solani,Nice staff,POSITIVE,The staff is nice.,,,['staff nice'],
+14,14,Priya Gupta,Nice food and nonveg sandwich tersy,POSITIVE,The food is nice.,,,['food nice'],
+15,15,hitten shah,Very good mall in Thane,POSITIVE,The mall in Thane is very good.,,,"['mall thane good', 'thane good']",
+16,16,RITIK RANJAN,Worth it,NEUTRAL,The reviewer considers the experience worth it.,The reviewer thinks the experience is valuable.,The reviewer believes the experience is worthwhile.,,
+17,17,RUFI MALAVI,I love it,POSITIVE,The customer loves it.,,,,
+18,18,Deba Prasad,Nice place,POSITIVE,The place is nice.,,,['place nice'],
+19,19,Abu Sahma,Nice palace,POSITIVE,The palace is nice.,,,['palace nice'],
+20,20,Harrish Raja,lovely place to visit dine and shop,POSITIVE,The lovely place is great.,The customers can dine and shop.,The place is a must-visit.,"['lovely place great', 'lovely place', 'place great']",
+21,21,Sanket Deshpande,"Best Mall in thane.. lots of shops, brands,  Food and entertainment everything at one place",POSITIVE,The mall offers a variety of shops and brands.,The mall has a range of food options available.,The mall provides entertainment options as well.,"['mall offers variety', 'mall offers', 'offers variety shops', 'offers variety', 'food options available']",
+22,22,Abhijit Jadhav,"One of the best mall on the central side. Got all great brands, restaurants and ample parking space",POSITIVE,The mall has great brands.,The mall has ample parking space.,The mall is on the central side.,"['mall great brands', 'mall great', 'great brands']",
+23,23,Sourabh Solanki,Best place,POSITIVE,The restaurant is called Best place.,The customers love the food here.,The atmosphere is very pleasant.,"['restaurant called best', 'called best place', 'best place', 'called best', 'customers love food']",

@@ -1,45 +1,45 @@
-,name,reviews,sentiment,feedback1,feedback2,feedback3
-0,Ganesh Shinde,Excellent Vada Pav,POSITIVE,The vada pav is excellent.,The vada pav is a must-try.,The vada pav is a great find.
-1,Harshad Bhoir,"Great food, and great ambiance. Visited this place thrice till now, just little crowded on weekends",POSITIVE,The food is great.,The ambiance is great.,The place is a bit crowded on weekends.
-2,ketki patwardhan,The food is delicious. Specially crispy lotus stem starter is must try. Staff is very friendly too.,POSITIVE,The food is delicious.,The crispy lotus stem starter is a must try.,The staff is very friendly too.
-3,Meenal Kedare,We ordered cheese cigar as a starter nd veg lukhnavi kebab masala for main course. Starter was awasome but we disappointed for main course.,NEGATIVE,The customer was disappointed with the main course.,The veg lukhnavi kebab masala was not as expected.,"The starter, cheese cigar, was the only good part."
-4,Ponnuswamy Natarajan,"the atmosphere is good. but dont expect anything great in food. They are confused in what they want to be. Pure bar should be fine, instead they claim to be multicuisine.
-Try urban tadka or unrestauarent nearby.",NEUTRAL,The atmosphere is good.,They are confused in what they want to be.,"Pure bar should be fine, instead."
-5,dhruv kapatel,Ambience is amazing. Good decoration. Service is quick. I went on weekend so there was 40 minutes waiting time. Food quality was awesome especially paneer and cheese. Tried Paneer hot dragon and veg cheese biryani.,POSITIVE,The ambience is amazing.,The decoration is good.,The food quality is awesome.
-6,AKSHAY PUTHRAN,Good food,POSITIVE,The restaurant serves good food.,,
-7,Swati Choudhary,WAIT TIME TO LONG,NEGATIVE,The customer experienced a long wait time.,The wait was excessively long.,The customer had to wait for a long time.
-8,Chintamani Chitale,"We have been regular visitors to Food Town for quite some years now. We visited today as well and ordered Mexican Sizzler.
+,Unnamed: 0.1,Unnamed: 0,name,reviews,sentiment,feedback1,feedback2,feedback3,pos_keywords,neg_keywords
+0,0,0,Ganesh Shinde,Excellent Vada Pav,POSITIVE,The vada pav is excellent.,The vada pav is a must-try.,The vada pav is a great find.,"['vada pav excellent', 'pav excellent', 'vada pav great', 'pav great']",
+1,1,1,Harshad Bhoir,"Great food, and great ambiance. Visited this place thrice till now, just little crowded on weekends",POSITIVE,The food is great.,The ambiance is great.,The place is a bit crowded on weekends.,"['food great', 'ambiance great']",
+2,2,2,ketki patwardhan,The food is delicious. Specially crispy lotus stem starter is must try. Staff is very friendly too.,POSITIVE,The food is delicious.,The crispy lotus stem starter is a must try.,The staff is very friendly too.,"['food delicious', 'staff friendly']",
+3,3,3,Meenal Kedare,We ordered cheese cigar as a starter nd veg lukhnavi kebab masala for main course. Starter was awasome but we disappointed for main course.,NEGATIVE,The customer was disappointed with the main course.,The veg lukhnavi kebab masala was not as expected.,"The starter, cheese cigar, was the only good part.",,"['disappointed main course', 'customer disappointed main', 'customer disappointed', 'disappointed main', 'kebab masala expected']"
+4,4,4,Ponnuswamy Natarajan,"the atmosphere is good. but dont expect anything great in food. They are confused in what they want to be. Pure bar should be fine, instead they claim to be multicuisine.
+Try urban tadka or unrestauarent nearby.",NEUTRAL,The atmosphere is good.,They are confused in what they want to be.,"Pure bar should be fine, instead.",,
+5,5,5,dhruv kapatel,Ambience is amazing. Good decoration. Service is quick. I went on weekend so there was 40 minutes waiting time. Food quality was awesome especially paneer and cheese. Tried Paneer hot dragon and veg cheese biryani.,POSITIVE,The ambience is amazing.,The decoration is good.,The food quality is awesome.,"['ambience amazing', 'decoration good', 'food quality awesome', 'quality awesome']",
+6,6,6,AKSHAY PUTHRAN,Good food,POSITIVE,The restaurant serves good food.,,,"['restaurant serves good', 'serves good food', 'good food', 'serves good']",
+7,7,7,Swati Choudhary,WAIT TIME TO LONG,NEGATIVE,The customer experienced a long wait time.,The wait was excessively long.,The customer had to wait for a long time.,,"['long wait time', 'long wait', 'wait excessively long', 'wait excessively', 'excessively long']"
+8,8,8,Chintamani Chitale,"We have been regular visitors to Food Town for quite some years now. We visited today as well and ordered Mexican Sizzler.
 There was a worm in the brocolli that came with the sizzler. It was pretty evident but the supposed chef Mr Vishal Thakur of course firstly denied it sighting that it is a blanched element in brocolli which it clearly wasn't...it was blanched well into the brocolli and was clearly a worm.
 The ""Good Times"" award winner restaurant didn't even have the courtesy of saying sorry and showing the decency of even offering to not bill the wormed food item.
 On the contrary Mr Thakur chose to hide behind the counter not even looking up as the serving waiter shamelessly just smiled.
 As for us, this was the last time we visited this wretched minded restaurant.
-Such big restaurants won't mind losing one loyal customer and would go on getting all pompous and high headed. I hope they learn their lesson soon the hard way.",NEGATIVE,The customer is disappointed with the restaurant's service.,"The supposed chef denied the presence of the worm, claiming it was a blanched element.",The restaurant failed to apologize for the unacceptable food quality.
-9,Shanmukh Dahihandekar,This is good food with various cuisine. I love their pasta most. I have go every time whenever I want eat pasta,POSITIVE,The restaurant offers a variety of cuisines.,The customer loves their pasta dishes.,The customer visits the restaurant frequently for pasta.
-10,Maithili Paranjape Biwalkar,Ample of veg options available,NEUTRAL,The restaurant offers a variety of veg options.,The veg options are abundant in the menu.,The customers can choose from a range of veg dishes.
-11,Bhavna blouse best blouse in thane mehta,Good,POSITIVE,The reviewer praises the product.,The product is good.,The reviewer is satisfied.
-12,Parikshit Joshi,Very good service and food. Especially Laxman & dheeraj were exceptional at there service. Kudos to the food town..!!! Definately wood love to visit again,POSITIVE,The service was very good.,Laxman and Dheeraj provided exceptional service.,The customer would love to visit again.
-13,Omkar Chavan,Good place to eat!,POSITIVE,The restaurant is a good place to eat.,The food is delicious.,The atmosphere is pleasant.
-14,Anil Harolikar,Too much noise around,NEGATIVE,The customer is annoyed by the noise.,The customer finds the environment too loud.,The customer dislikes the noisy atmosphere.
-15,Saket Naik,"Really good food
+Such big restaurants won't mind losing one loyal customer and would go on getting all pompous and high headed. I hope they learn their lesson soon the hard way.",NEGATIVE,The customer is disappointed with the restaurant's service.,"The supposed chef denied the presence of the worm, claiming it was a blanched element.",The restaurant failed to apologize for the unacceptable food quality.,,"['customer disappointed restaurant', 'disappointed restaurant service', 'disappointed restaurant', 'customer disappointed', 'restaurant failed apologize']"
+9,9,9,Shanmukh Dahihandekar,This is good food with various cuisine. I love their pasta most. I have go every time whenever I want eat pasta,POSITIVE,The restaurant offers a variety of cuisines.,The customer loves their pasta dishes.,The customer visits the restaurant frequently for pasta.,"['offers variety cuisines', 'restaurant offers variety', 'restaurant offers', 'offers variety', 'restaurant frequently pasta']",
+10,10,10,Maithili Paranjape Biwalkar,Ample of veg options available,NEUTRAL,The restaurant offers a variety of veg options.,The veg options are abundant in the menu.,The customers can choose from a range of veg dishes.,,
+11,11,11,Bhavna blouse best blouse in thane mehta,Good,POSITIVE,The reviewer praises the product.,The product is good.,The reviewer is satisfied.,"['product good', 'reviewer satisfied']",
+12,12,12,Parikshit Joshi,Very good service and food. Especially Laxman & dheeraj were exceptional at there service. Kudos to the food town..!!! Definately wood love to visit again,POSITIVE,The service was very good.,Laxman and Dheeraj provided exceptional service.,The customer would love to visit again.,"['service good', 'dheeraj provided exceptional', 'provided exceptional service', 'exceptional service', 'provided exceptional']",
+13,13,13,Omkar Chavan,Good place to eat!,POSITIVE,The restaurant is a good place to eat.,The food is delicious.,The atmosphere is pleasant.,"['restaurant good place', 'restaurant good', 'good place eat', 'good place', 'food delicious']",
+14,14,14,Anil Harolikar,Too much noise around,NEGATIVE,The customer is annoyed by the noise.,The customer finds the environment too loud.,The customer dislikes the noisy atmosphere.,,"['customer annoyed noise', 'customer annoyed', 'annoyed noise']"
+15,15,15,Saket Naik,"Really good food
 Amazing service
 
-Ravioli could be better. But still it tasted better than most",POSITIVE,The customer enjoyed the food.,The service was amazing.,The ravioli tasted better than most.
-16,Vishal Chaskar,"Visited this restaurant for the third time, I liked this restaurant because of their food taste ambience and service.
-Today we ordered butter garlic paneer which is creamy, thai pot rice taste's awesome, paneer chilli bow was good and garlic burnt noodles on average side.",POSITIVE,"The customer liked the restaurant due to its food, ambience, and service.","The butter garlic paneer was creamy, and the thai pot rice tasted awesome.","The paneer chilli bowl was good, and the garlic burnt noodles were average."
-17,Ishita Shah,Amazing food and the ambience,POSITIVE,The food is amazing.,,
-18,Prasad Vernekar,Good,POSITIVE,The reviewer praises the product.,The product is good.,The reviewer is satisfied.
-19,Rahul Dudia,"Please don't order roomali roti for parcel. They send half cook roomali roti.
-Image attached for reference.",NEGATIVE,The customer received half-cooked roomali roti.,The parcel contained poorly cooked roomali roti.,The customer was unhappy with the roomali roti quality.
-20,Divya,Service from dinesh was great,POSITIVE,The service from Dinesh was great.,,
-21,nidhi jain,"Ordered burnt garlic soup it tasted like water and was worst and prepared under 1 min of order and was packet food soup
+Ravioli could be better. But still it tasted better than most",POSITIVE,The customer enjoyed the food.,The service was amazing.,The ravioli tasted better than most.,"['customer enjoyed food', 'customer enjoyed', 'enjoyed food', 'service amazing', 'ravioli tasted better']",
+16,16,16,Vishal Chaskar,"Visited this restaurant for the third time, I liked this restaurant because of their food taste ambience and service.
+Today we ordered butter garlic paneer which is creamy, thai pot rice taste's awesome, paneer chilli bow was good and garlic burnt noodles on average side.",POSITIVE,"The customer liked the restaurant due to its food, ambience, and service.","The butter garlic paneer was creamy, and the thai pot rice tasted awesome.","The paneer chilli bowl was good, and the garlic burnt noodles were average.","['customer liked restaurant', 'liked restaurant food', 'liked restaurant', 'customer liked', 'rice tasted awesome']",
+17,17,17,Ishita Shah,Amazing food and the ambience,POSITIVE,The food is amazing.,,,['food amazing'],
+18,18,18,Prasad Vernekar,Good,POSITIVE,The reviewer praises the product.,The product is good.,The reviewer is satisfied.,"['product good', 'reviewer satisfied']",
+19,19,19,Rahul Dudia,"Please don't order roomali roti for parcel. They send half cook roomali roti.
+Image attached for reference.",NEGATIVE,The customer received half-cooked roomali roti.,The parcel contained poorly cooked roomali roti.,The customer was unhappy with the roomali roti quality.,,"['half cooked roomali', 'received half cooked', 'half cooked', 'customer received half', 'received half']"
+20,20,20,Divya,Service from dinesh was great,POSITIVE,The service from Dinesh was great.,,,"['service dinesh great', 'dinesh great']",
+21,21,21,nidhi jain,"Ordered burnt garlic soup it tasted like water and was worst and prepared under 1 min of order and was packet food soup
 Service is also not at all noticeable
-Worst experience",NEGATIVE,The customer was served burnt garlic soup.,The soup tasted like water and was the worst.,The service was also completely unnoticeable.
-22,Snehal Borole,"Extensive menu .
+Worst experience",NEGATIVE,The customer was served burnt garlic soup.,The soup tasted like water and was the worst.,The service was also completely unnoticeable.,,"['water worst', 'like water worst']"
+22,22,22,Snehal Borole,"Extensive menu .
 Good food
-Roastes Almond broccoli soup must try",POSITIVE,The menu is extensive.,The food is good.,The Roastes Almond broccoli soup is a must try.
-23,Pradeep Nair,Good food and service,POSITIVE,The food is good.,The service is excellent.,
-24,Samanwita Bagg,Good food and ambience.,POSITIVE,The restaurant offers good food.,The atmosphere is pleasant.,The overall experience is enjoyable.
-25,Keshav Dubey,"I visited Food town recently and I must say it's a good place for vegetarians. They have 2 floors for seating, the ambiance is good, service is prompt and fast and food tastes great.
+Roastes Almond broccoli soup must try",POSITIVE,The menu is extensive.,The food is good.,The Roastes Almond broccoli soup is a must try.,['food good'],
+23,23,23,Pradeep Nair,Good food and service,POSITIVE,The food is good.,The service is excellent.,,"['food good', 'service excellent']",
+24,24,24,Samanwita Bagg,Good food and ambience.,POSITIVE,The restaurant offers good food.,The atmosphere is pleasant.,The overall experience is enjoyable.,"['restaurant offers good', 'offers good food', 'restaurant offers', 'good food', 'offers good']",
+25,25,25,Keshav Dubey,"I visited Food town recently and I must say it's a good place for vegetarians. They have 2 floors for seating, the ambiance is good, service is prompt and fast and food tastes great.
 
 Recommendation
 
@@ -55,10 +55,10 @@ Overall the food tasted really good, some of the dishes were not up to the mark 
 
 Must visit if you are vegetarian and looking for fusion food and multi cuisine dishes.
 
-Follow for more such reviews and do leave a thumbs up if you liked the review.",POSITIVE,The customer praises Food town for its good ambiance.,"The customer recommends the Triple Schezwan fried rice, which tastes delicious.","The customer enjoys the Asparagus Tempura Shushi, with crunchy Tempura and amazing taste."
-26,Hrishikesh Pisal Deshmukh,"Good ambiance.
+Follow for more such reviews and do leave a thumbs up if you liked the review.",POSITIVE,The customer praises Food town for its good ambiance.,"The customer recommends the Triple Schezwan fried rice, which tastes delicious.","The customer enjoys the Asparagus Tempura Shushi, with crunchy Tempura and amazing taste.","['food town good', 'town good ambiance', 'town good', 'good ambiance', 'rice tastes delicious']",
+26,26,26,Hrishikesh Pisal Deshmukh,"Good ambiance.
 Variety of food options.
 Quick service.
 Neat and clean.
-Strongly recommended",POSITIVE,The restaurant has a good ambiance.,The menu offers a variety of food options.,The service is quick and efficient.
-27,Khushi,Worst staff ever...don't visit the place unless u wish to get insulted,NEGATIVE,The staff is the worst.,The customer is not welcome.,The customer will get insulted.
+Strongly recommended",POSITIVE,The restaurant has a good ambiance.,The menu offers a variety of food options.,The service is quick and efficient.,"['restaurant good ambiance', 'restaurant good', 'good ambiance', 'menu offers variety', 'offers variety food']",
+27,27,27,Khushi,Worst staff ever...don't visit the place unless u wish to get insulted,NEGATIVE,The staff is the worst.,The customer is not welcome.,The customer will get insulted.,,['staff worst']
