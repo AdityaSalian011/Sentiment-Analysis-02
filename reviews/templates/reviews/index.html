@@ -3,92 +3,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    <link 
-      rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer" 
-    />
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style>
-</head>
-<body class="w-full min-h-screen bg-gradient-to-t from-[hsl(0,0%,90%)] via-[hsl(0,0%,85%)] to-[hsl(0,0%,80%)]">
-    <!-- navbar section starts here -->
-    <nav class="fixed top-0 left-0 min-h-screen w-12 sm:w-16 md:w-20 p-1 sm:p-2 md:p-3 bg-[hsl(0,0%,90%)] border border-[hsl(0,0%,90%)] border-r-[hsl(0,0%,100%)] space-y-1 sm:space-y-2">
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-money-bill-wave text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-wallet text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-chart-line text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>   
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-key text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>  
-    </nav>
-    <!-- navbar ends here  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LocalReviews — Dark</title>
 
-    <!-- main body content  -->
-    <main class="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] m-12 sm:m-16 md:m-20 p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-8 md:space-y-10">
-        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Food & Beverages</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-3">
-            <a href="{% url 'reviews' 'mamledar-misal' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-gradient-to-t from-[#071023] via-[#081128] to-[#0b1220] text-gray-200">
+  <!-- TOP NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f1a]/70 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- brand -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] shadow-lg">
+            <i class="fa-solid fa-money-bill-wave text-white text-lg"></i>
+          </div>
+          <div>
+            <a class="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white">LocalReviews</a>
+            <div class="text-xs text-[rgba(255,255,255,0.6)] -mt-0.5">discover local businesses</div>
+          </div>
+        </div>
+
+        <!-- center nav -->
+        <nav class="hidden md:flex items-center gap-6">
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.85)] hover:text-[#7fb1ff] transition">Home</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.85)] hover:text-[#7fb1ff] transition">Explore</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.85)] hover:text-[#7fb1ff] transition">Categories</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.85)] hover:text-[#7fb1ff] transition">About</button>
+        </nav>
+
+        <!-- right controls -->
+        <div class="flex items-center gap-3">
+          <!-- search -->
+          <div class="hidden sm:flex items-center bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] rounded-full px-3 py-1 shadow-sm">
+            <i class="fa-solid fa-magnifying-glass text-[rgba(255,255,255,0.6)]"></i>
+            <input
+              type="search"
+              placeholder="Search businesses..."
+              class="ml-2 bg-transparent outline-none text-sm text-[rgba(255,255,255,0.85)] placeholder-[rgba(255,255,255,0.38)]"
+            />
+          </div>
+
+          <!-- auth button (no routing changes) -->
+          <div>
+            {% if user.is_authenticated %}
+              <button id="auth-btn" type="button" class="px-3 py-1.5 rounded-md bg-gradient-to-br from-[#ff5f6d] to-[#ff8a9e] text-white text-sm font-medium shadow">Logout</button>
+            {% else %}
+              <button id="auth-btn" type="button" class="px-3 py-1.5 rounded-md bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] text-white text-sm font-medium shadow">Login</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+    <!-- REPLACE your main with this -->
+    <main class="max-w-7xl mx-auto mt-20 p-4 sm:p-6 md:p-8 space-y-8">
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-white">Food & Beverages</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <a href="{% url 'reviews' 'mamledar-misal-restaurant' %}"
+            class="flex items-center justify-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+                <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+                <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                        style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                    Mamledar Misal
+                </span>
             </a>
-            <a href="{% url 'reviews' 'food-town' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+            <a href="{% url 'reviews' 'food-town-restaurant' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Food Town
+            </span>
             </a>
-            <a href="{% url 'reviews' 'hotel-mavlan' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+            <a href="{% url 'reviews' 'hotel-mavlan-restaurant' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Hotel Mavlan
+            </span>
             </a>
         </div>
-        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Shopping & Entertainment</h2>
-        <div class="grid grid-cols-2 gap-x-2 gap-y-3">
-            <a href="{% url 'reviews' 'korum-mall' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-white">Shopping & Entertainment</h2>
+
+        <div class="grid grid-cols-2 gap-4">
+            <a href="{% url 'reviews' 'korum-mall' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Korum Mall
+            </span>
             </a>
-            <a href="{% url 'reviews' 'viviana-mall' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+            <a href="{% url 'reviews' 'viviana-mall' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Viviana Mall
+            </span>
             </a>
         </div>
-        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Health, Fitness & Lifestyle</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-3">
-            <a href="{% url 'reviews' 'golds-gym' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-white">Health, Fitness & Lifestyle</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <a href="{% url 'reviews' 'golds-gym' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Golds Gym
+            </span>
             </a>
-            <a href="{% url 'reviews' 'decathlon-sports' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+            <a href="{% url 'reviews' 'decathlon-sports' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Decathlon Sports
+            </span>
             </a>
-            <a href="{% url 'reviews' 'jupyter-hospital' %}" class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
+
+            <a href="{% url 'reviews' 'jupyter-hospital' %}"
+            class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+            <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+            <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Jupyter Hospital
+            </span>
             </a>
         </div>
-        <!-- <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Services & Startups</h2>
-        <div class="grid grid-cols-2 gap-x-2 gap-y-3">
-            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
-            </div>
-            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
-            </div>
+
+        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-white">School & College</h2>
+
+        <div class="grid grid-cols-2 gap-4">
+          <a href="{% url 'reviews' 'orchids-school' %}"
+          class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+          <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+          <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Orchids School
+            </span>
+          </a>
+
+          <a href="{% url 'reviews' 'dnyansadhana-college' %}"
+          class="flex items-center justify-center h-[140px] sm:h-[180px] md:h-[220px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl cursor-pointer px-6 transition transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(45,99,255,0.08)]">
+          <i class="fa-solid fa-location-dot text-[#7fb1ff] text-3xl sm:text-4xl"></i>
+          <span class="ml-4 text-2xl sm:text-3xl md:text-4xl text-[#cfe7ff] font-semibold tracking-wider"
+                    style="font-family: 'Great Vibes', cursive; text-shadow: 0 4px 12px rgba(0,0,0,0.45);">
+                Dnyansadhana College
+            </span>
+          </a>
         </div>
-        <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4">Education</h2>
-        <div class="grid grid-cols-1 gap-x-2 gap-y-3">
-            <div class="flex items-center justify-center h-[120px] sm:h-[180px] md:h-[240px] bg-[hsl(0,0%,75%)] border border-2 border-[hsl(0,0%,90%)] border-t-[hsl(0,0%,100%)] rounded-2xl cursor-pointer transition">
-                <img class="w-[160px] sm:w-[220px] md:w-[280px] h-[120px] sm:h-[180px] md:h-[240px]" src="{% static 'reviews/images/kfc-logo.png' %}" alt="">
-            </div>
-        </div> -->
     </main>
+
 </body>
 </html>

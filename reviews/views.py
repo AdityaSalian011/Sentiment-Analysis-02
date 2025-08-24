@@ -10,30 +10,23 @@ from django.db.models import Count, Q
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-CSV_DIR = os.path.join(BASE_DIR, 'refined_review_ds')
+CSV_DIR = os.path.join(BASE_DIR, 'redefined_ds')
 
 def index(request):
-    form = ReviewForm()
-
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.user = request.user
-            review.save()
-    
-    return render(request, 'reviews/index.html', {'form':form})
+    return render(request, 'reviews/index.html')
 
 def show_reviews(request, company):
     company_ds = {
-        'mamledar-misal': os.path.join(CSV_DIR, 'mamledar-misal.csv'),
-        'food-town': os.path.join(CSV_DIR, 'food-town.csv'),
-        'hotel-mavlan': os.path.join(CSV_DIR, 'hotel-mavlan.csv'),
+        'mamledar-misal-restaurant': os.path.join(CSV_DIR, 'mamledar-misal-restaurant.csv'),
+        'food-town-restaurant': os.path.join(CSV_DIR, 'food-town-restaurant.csv'),
+        'hotel-mavlan-restaurant': os.path.join(CSV_DIR, 'hotel-mavlan-restaurant.csv'),
         'korum-mall': os.path.join(CSV_DIR, 'korum-mall.csv'),
         'viviana-mall': os.path.join(CSV_DIR, 'viviana-mall.csv'),
         'golds-gym': os.path.join(CSV_DIR, 'golds-gym.csv'),
         'decathlon-sports': os.path.join(CSV_DIR, 'decathlon-sports.csv'),
-        'jupyter-hospital': os.path.join(CSV_DIR, 'jupyter-hospital.csv')
+        'jupyter-hospital': os.path.join(CSV_DIR, 'jupyter-hospital.csv'),
+        'orchids-school': os.path.join(CSV_DIR, 'orchids-school.csv'),
+        'dnyansadhana-college': os.path.join(CSV_DIR, 'dnyansadhana-college.csv')
     }
 
     file_path = company_ds.get(company.lower())
@@ -47,7 +40,7 @@ def show_reviews(request, company):
         Review.objects.update_or_create(
             company=company,
             username=rows['name'],
-            review=rows['reviews'],
+            review=rows['review'],
             sentiment=rows['sentiment'],
             feedback1=rows['feedback1'],
             feedback2=rows['feedback2'],
@@ -61,19 +54,23 @@ def show_reviews(request, company):
 
         # sending user review to fastapi model server to get sentiment
         user_sentiment = requests.post(
-            'http://127.0.0.1:8001/sentiment',
+            'http://127.0.0.1:10000/sentiment',
             json={'review':user_review}
         )
         sentiment = user_sentiment.json().get('sentiment', 'Error') 
         
         # sending user review to fastapi model server to get feedback
+        domain = extract_domain_from_filename(company)
+        print(domain)
+        print("SENDING FEEDBACK JSON:", {"review": user_review, "domain": domain})
         user_feedbacks = requests.post(
-            'http://127.0.0.1:8001/feedbacks',
-            json={'review':user_review}
+            'http://127.0.0.1:10000/feedbacks',
+            json={'review':user_review, 'domain': domain}
         )
         f1 = user_feedbacks.json().get('feedback1', 'Error')
         f2 = user_feedbacks.json().get('feedback2', 'Error')
         f3 = user_feedbacks.json().get('feedback3', 'Error')
+        print(f1, f2, f3)
 
         if form.is_valid():
             review = form.save(commit=False)
@@ -91,9 +88,27 @@ def show_reviews(request, company):
 
 def show_dashboard(request, company):
     total_reviews = Review.objects.filter(company=company).aggregate(
-        pos_reviews = Count('id', filter=Q(sentiment='POSITIVE')),
-        neg_reviews = Count('id', filter=Q(sentiment='NEGATIVE')),
-        neutral_reviews = Count('id', filter=Q(sentiment='NEUTRAL'))
+        pos_reviews = Count('id', filter=Q(sentiment='positive')),
+        neg_reviews = Count('id', filter=Q(sentiment='negative')),
+        neutral_reviews = Count('id', filter=Q(sentiment='neutral'))
     )
 
     return render(request, 'reviews/dashboard.html', {'total_reviews': total_reviews, 'company':company})
+
+# helper function
+def extract_domain_from_filename(filename):
+    DOMAIN_MAP = {
+    "sports": "sports store",
+    "college": "college",
+    "restaurant": "restaurant",
+    "gym": "gym",
+    "hospital": "hospital",
+    "mall": "shopping mall",
+    "school": "school"
+    }
+    name = filename.split('.')[0] if '.' in filename else filename
+
+    for key, domain in DOMAIN_MAP.items():
+        if key in name.lower():
+            return domain
+    return 'general'

@@ -3,160 +3,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    <link 
-      rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer" 
-    />
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — {{ company }}</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
 </head>
-<body class="w-full min-h-screen bg-gradient-to-t from-[hsl(0,0%,90%)] via-[hsl(0,0%,85%)] to-[hsl(0,0%,80%)]">
-    <!-- navbar section starts here -->
-    <nav class="fixed top-0 left-0 min-h-screen w-12 sm:w-16 md:w-20 p-1 sm:p-2 md:p-3 bg-[hsl(0,0%,90%)] border border-[hsl(0,0%,90%)] border-r-[hsl(0,0%,100%)] space-y-1 sm:space-y-2">
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-money-bill-wave text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-wallet text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-chart-line text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>   
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-key text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>  
-    </nav>
-    <!-- navbar ends here  -->
 
-    <!-- main body content -->
-    <main class="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] m-12 sm:m-16 md:m-20 p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-8 md:space-y-10">
-        <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <!-- positive review count -->
-            <div class="min-h-[100px] bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Positive Reviews</p>
-                    <p class="text-[hsl(145,63%,42%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.pos_reviews}}</p>
-                </div>
-            </div>
-            <!-- negative review count -->
-            <div class="min-h-[100px] bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Negative Reviews</p>
-                    <p class="text-[hsl(0,74%,51%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neg_reviews}}</p>
-                </div>
-            </div>
-            <!-- neutral review count -->
-            <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-xl font-semibold tracking-wide leading-tight">Neutral Reviews</p>
-                    <p class="text-[hsl(210,16%,45%)] text-2xl sm:text-3xl md:text-3xl font-semibold tracking-wide">{{total_reviews.neutral_reviews}}</p>
-                </div>
-            </div>
-            <!-- negative, neutral, positive graph -->
-            <div class="h-[300px] sm:h-[350px] md:h-[500px] sm:col-span-2 lg:col-span-4 p-4 sm:p-6 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl flex flex-col">
-                <p class="text-[hsl(0,0%,30%)] text-lg sm:text-xl md:text-2xl font-semibold tracking-wide leading-tight text-center mb-4">Sentiment BarPlot</p>
-                <div class="flex-1 flex items-center justify-center overflow-hidden">
-                    <canvas id="senti-barplot" class="w-full h-full"></canvas>
-                </div>
-            </div>
-            <!-- key positive words -->
-            <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p>Keywords from Positive Review</p>
-                    <p>In progress...</p>
-                </div>
-            </div>
-            <!-- key negative words -->
-            <div class="min-h-[100px] sm:col-span-2 bg-gradient-to-b from-[hsl(0,0%,90%)] to-[hsl(0,0%,95%)] border border-2 border-[hsl(0,0%,100%)] border-b-[hsl(0,0%,80%)] rounded-xl">
-                <div class="py-4 sm:py-6 md:py-8 text-center space-y-2 sm:space-y-4">
-                    <p>Keywords from Negative Review</p>
-                    <p>In Progress..</p>
-                </div>
-            </div>
+<body class="min-h-screen w-full bg-gradient-to-t from-[#071023] via-[#081128] to-[#0b1220] text-gray-200">
+  <!-- Top navbar (no routing changes) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f1a]/70 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- brand -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] shadow-lg">
+            <i class="fa-solid fa-money-bill-wave text-white text-lg"></i>
+          </div>
+          <div>
+            <span class="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white">LocalReviews</span>
+            <div class="text-xs text-[rgba(255,255,255,0.65)] -mt-0.5">discover local businesses</div>
+          </div>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let companyName = "{{ company }}";
-            let posReviewCount = {{ total_reviews.pos_reviews|default:0 }};
-            let negReviewCount = {{ total_reviews.neg_reviews|default:0 }};
-            let neutralReviewCount = {{ total_reviews.neutral_reviews|default:0 }};
-            
-            let data = {
-                labels : ['Positive', 'Negative', 'Neutral'],
-                datasets : [{
-                    label : `Review Counts for ${companyName}`,
-                    data : [posReviewCount, negReviewCount, neutralReviewCount],
-                    backgroundColor : [
-                        'hsla(145,63%,42%,0.6)',
-                        'hsla(0,74%,51%,0.6)',
-                        'hsla(210,16%,45%,0.6)'
-                    ],
-                    borderColor : [
-                        'hsla(145,63%,42%,1)',
-                        'hsla(0,74%,51%,1)',
-                        'hsla(210,16%,45%,1)'
-                    ],
-                    borderWidth : 2,
-                    borderRadius : 10,
-                    hoverBackgroundColor : [
-                        'hsla(145,63%,42%,0.9)',
-                        'hsla(0,74%,51%,0.9)',
-                        'hsla(210,16%,45%,0.9)'
-                    ],
-                }]
-            }
 
-            let options = {
-                responsive : true,
-                plugins : {
-                    legend : {
-                        display : false
-                    }
-                },
-                scales : {
-                    x : {
-                        ticks : {
-                            font : {
-                                size : 14,
-                                weight : '600'
-                            },
-                            color : 'hsl(0,0%,20%)'
-                        }
-                    },
-                    y : {
-                        beginAtZero : true,
-                        ticks : {
-                            font : {
-                                size : 14,
-                                weight : '600'
-                            },
-                            color : 'hsl(0,0%,20%)'
-                        }
-                    }
-                }
-            }
+        <!-- nav links (decorative, no hrefs) -->
+        <nav class="hidden md:flex items-center gap-6">
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Explore</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Categories</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">About</button>
+        </nav>
 
-            let ctx = document.getElementById('senti-barplot').getContext('2d');
+        <!-- right controls (no routing) -->
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] rounded-full px-3 py-1">
+            <i class="fa-solid fa-magnifying-glass text-[rgba(255,255,255,0.6)]"></i>
+            <input
+              type="search"
+              placeholder="Search businesses..."
+              class="ml-2 bg-transparent outline-none text-sm text-[rgba(255,255,255,0.9)] placeholder-[rgba(255,255,255,0.4)]"
+            />
+          </div>
 
-            let mySentimentBarplot = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: options
-            });
-        })
-    </script>
+          <!-- login/logout button (decorative — no routing) -->
+          <div>
+            <button id="auth-btn" class="px-3 py-1.5 rounded-md bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] text-white text-sm font-medium shadow">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page body -->
+  <main class="max-w-7xl mx-auto mt-28 px-4 sm:px-6 lg:px-8 pb-12">
+    <!-- Top metric cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium">Positive Reviews</p>
+            <p class="mt-2 text-2xl font-bold text-[#cfe7ff]">{{ total_reviews.pos_reviews }}</p>
+          </div>
+          <div class="w-12 h-12 rounded-lg bg-[rgba(127,177,255,0.08)] flex items-center justify-center">
+            <i class="fa-solid fa-thumbs-up text-[#7fb1ff]"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium">Negative Reviews</p>
+            <p class="mt-2 text-2xl font-bold text-[#ffc4c4]">{{ total_reviews.neg_reviews }}</p>
+          </div>
+          <div class="w-12 h-12 rounded-lg bg-[rgba(255,95,109,0.06)] flex items-center justify-center">
+            <i class="fa-solid fa-thumbs-down text-[#ff7b8a]"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium">Neutral Reviews</p>
+            <p class="mt-2 text-2xl font-bold text-[#c7d0ff]">{{ total_reviews.neutral_reviews }}</p>
+          </div>
+          <div class="w-12 h-12 rounded-lg bg-[rgba(199,208,255,0.06)] flex items-center justify-center">
+            <i class="fa-solid fa-ellipsis text-[#9aa7ff]"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-5">
+        <div>
+          <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium">Total Reviews</p>
+          <p class="mt-2 text-2xl font-bold text-[#ffffff]">{{ total_reviews.pos_reviews|default:0|add:total_reviews.neg_reviews|default:0|add:total_reviews.neutral_reviews|default:0 }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart + keywords area -->
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Sentiment Barplot (spans two columns on large screens) -->
+      <div class="lg:col-span-2 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-6 flex flex-col">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold text-white">Sentiment BarPlot</h3>
+          <span class="text-sm text-[rgba(255,255,255,0.65)]">Overview for {{ company }}</span>
+        </div>
+        <div class="flex-1 min-h-[260px]">
+          <canvas id="senti-barplot" class="w-full h-full"></canvas>
+        </div>
+      </div>
+
+      <!-- Keywords panel (right column) -->
+      <div class="rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] p-6">
+        <h4 class="text-md font-semibold text-white mb-3">Top Keywords (sample)</h4>
+
+        <!-- Positive keywords -->
+        <div class="mb-4">
+          <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium mb-2">Positive Keywords</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-[rgba(127,177,255,0.08)] text-[#cfe7ff] text-sm">tasty</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(127,177,255,0.08)] text-[#cfe7ff] text-sm">friendly staff</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(127,177,255,0.08)] text-[#cfe7ff] text-sm">clean</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(127,177,255,0.08)] text-[#cfe7ff] text-sm">fast service</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(127,177,255,0.08)] text-[#cfe7ff] text-sm">value</span>
+          </div>
+        </div>
+
+        <!-- Negative keywords -->
+        <div>
+          <p class="text-sm text-[rgba(255,255,255,0.75)] font-medium mb-2">Negative Keywords</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-[rgba(255,95,109,0.06)] text-[#ffc4c4] text-sm">slow</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(255,95,109,0.06)] text-[#ffc4c4] text-sm">pricey</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(255,95,109,0.06)] text-[#ffc4c4] text-sm">noisy</span>
+            <span class="px-3 py-1 rounded-full bg-[rgba(255,95,109,0.06)] text-[#ffc4c4] text-sm">cold food</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Inlined JS: builds chart with the Django variables (no changes to logic) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Read counts from template variables
+    const companyName = "{{ company }}";
+    const posReviewCount = {{ total_reviews.pos_reviews|default:0 }};
+    const negReviewCount = {{ total_reviews.neg_reviews|default:0 }};
+    const neutralReviewCount = {{ total_reviews.neutral_reviews|default:0 }};
+
+    // Chart data
+    const labels = ['Positive', 'Negative', 'Neutral'];
+    const values = [posReviewCount, negReviewCount, neutralReviewCount];
+
+    const ctx = document.getElementById('senti-barplot').getContext('2d');
+
+    // Create subtle gradients for bars (fall back to solid colors if gradient unsupported)
+    const gradientPos = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientPos.addColorStop(0, 'rgba(127,177,255,0.95)');
+    gradientPos.addColorStop(1, 'rgba(127,177,255,0.6)');
+
+    const gradientNeg = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientNeg.addColorStop(0, 'rgba(255,123,138,0.95)');
+    gradientNeg.addColorStop(1, 'rgba(255,123,138,0.6)');
+
+    const gradientNeu = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientNeu.addColorStop(0, 'rgba(199,208,255,0.95)');
+    gradientNeu.addColorStop(1, 'rgba(199,208,255,0.6)');
+
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: `Review counts for ${companyName}`,
+        data: values,
+        backgroundColor: [gradientPos, gradientNeg, gradientNeu],
+        borderColor: ['rgba(127,177,255,1)', 'rgba(255,123,138,1)', 'rgba(199,208,255,1)'],
+        borderWidth: 0,
+        borderRadius: 12,
+        maxBarThickness: 80, // prevents oversize bars on wide screens
+      }]
+    };
+
+    const options = {
+      maintainAspectRatio: false,
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(10,10,12,0.95)',
+          titleColor: '#ffffff',
+          bodyColor: '#f9fafb',
+          padding: 10,
+          cornerRadius: 8,
+          displayColors: false,
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false, drawBorder: false },
+          ticks: {
+            color: 'rgba(255,255,255,0.85)',
+            font: { size: 14, weight: '600' }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(255,255,255,0.03)',
+            drawBorder: false
+          },
+          ticks: {
+            color: 'rgba(255,255,255,0.7)',
+            font: { size: 13, weight: '600' },
+            precision: 0
+          }
+        }
+      },
+      animation: { duration: 700, easing: 'easeOutQuart' },
+    };
+
+    // Destroy existing chart instance if re-rendered (safety)
+    if (window._sentiChart) { window._sentiChart.destroy(); }
+
+    window._sentiChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+
+    // Small UX: allow clicking legend-like labels (optional)
+    // (Not required — kept minimal and clean)
+  });
+  </script>
 </body>
 </html>

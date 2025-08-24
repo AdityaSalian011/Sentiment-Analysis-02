@@ -3,126 +3,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    <link 
-      rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer" 
-    />
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LocalReviews</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Script-style font (for the username/company name) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+  />
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
 </head>
-<body class="w-full min-h-screen bg-gradient-to-t from-[hsl(0,0%,90%)] via-[hsl(0,0%,85%)] to-[hsl(0,0%,80%)]">
-    <!-- navbar section starts here -->
-    <nav class="fixed top-0 left-0 min-h-screen w-12 sm:w-16 md:w-20 p-1 sm:p-2 md:p-3 bg-[hsl(0,0%,90%)] border border-[hsl(0,0%,90%)] border-r-[hsl(0,0%,100%)] space-y-1 sm:space-y-2">
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-money-bill-wave text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-arrow-up-right-from-square text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-wallet text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-chart-line text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>   
-        <a href="#" class="flex items-center justify-center bg-[hsl(0,0%,80%)] border border-[hsl(220,100%,60%)] rounded-md p-1 sm:p-2 md:p-3 hover:bg-[hsl(220,100%,60%,0.5)] hover:rounded-full transition-all duration-500">
-            <i class="fa-solid fa-key text-xl sm:text-2xl md:fa-2x text-[hsl(220,100%,60%)]"></i>
-        </a>  
-    </nav>
 
-    
-    <div class="fixed bottom-0 right-0 mb-2 mr-4">
-        <button id="add-button" class="w-[300px] bg-[hsl(0,0%,90%)] hover:bg-gradient-to-t from-[hsl(0,0%,90%)] to-[hsl(0,0%,85%)] text-lg font-semibold px-5 py-2 border border-[hsl(0,0%,70%)] border-t-[hsl(0,0%,50%)] rounded-lg flex items-center justify-start">
-            <i class="fa-solid fa-circle-plus mr-2"></i>
-            Add Review
-        </button>
-    </div>
-
-    <div id="overlay" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
-        <form id="review-form" method="post" 
-            class="w-[90%] max-w-md bg-white rounded-2xl shadow-lg p-6 space-y-6">
-            {% csrf_token %}
-            <!-- Heading -->
-            <h2 class="text-2xl font-bold text-gray-800 text-center">
-                Add a Review
-            </h2>
-            <!-- Input -->
-            <div>
-                <input type="text" name="review" id="add-review"
-                    placeholder="Write your review here..."
-                    class="w-full p-3 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    autocomplete="off" 
-                    maxlength="512" 
-                    required>
-            </div>
-            <!-- Buttons -->
-            <div class="flex space-x-3">
-                <button id="submit-btn" type="submit" 
-                    class="w-1/2 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
-                    Submit
-                </button>
-                <button id="back-btn" type="button" 
-                    class="w-1/2 py-2 rounded-lg bg-gray-200 text-gray-800 font-semibold hover:bg-gray-300 transition">
-                    Cancel
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <div class="fixed top-10 right-6">
-        <a href="{% url 'dashboard' company %}" class="w-full flex items-end text-[hsl(0,0%,15%)] bg-[hsl(220,100%,50%)] underline text-md sm:text-lg md:text-xl font-semibold tracking-wider py-2 px-4 border border-[hsl(220,100%,50%)] hover:bg-[hsl(220,100%,50%,0.5)] rounded-md">View Dashboard</a>
-    </div>
-    <main class="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(100%-5rem)] m-12 sm:m-16 md:m-20 p-4 space-y-10">
-        
-        {% for entry in entries %}
-        <div class="w-full h-full divide-y divide-gray-900 divide-solid space-y-4 px-4"> 
-            <!-- user logo and name div  -->
-            <div class="flex items-center space-x-3">
-                <img class="w-[50px] h-[50px]" src="{% static 'reviews/images/default-user-icon.png' %}" alt="">
-                <p class="text-center text-2xl font-bold tracking-wide underline">{{entry.username}}</p>
-            </div>
-            <!-- user review/comment div  -->
-            <div class="pt-4 space-y-2">
-                <p class="text-xl font-bold tracking-wide">Review:</p>
-                <p class="text-sm md:text-md">{{entry.review}}</p>
-            </div>
-            <!-- check sentiment of user review btn  -->
-            <div class="py-2 px-4">
-                <button id="show-analysis-btn-{{entry.id}}" onclick="showAnalysis({{entry.id}})" class="w-full text-[hsl(220,100%,50%)] underline flex font-semibold tracking-wider" type="button">Check Sentiment</button>
-    
-                <!-- button to reset if clicked  -->
-                <button id="hide-analysis-btn-{{entry.id}}" class="w-full text-[hsl(220,100%,50%)] underline hidden font-semibold tracking-wider" type="button">Remove Analysis</button>
-    
-                <div id="show-analysis-{{entry.id}}" class="w-full hidden flex-col md:flex-row pt-4 space-y-3 md:space-y-0">
-                    <div class="w-full space-x-2 flex">
-                        <p class="text-lg md:text-xl font-bold">Sentiment: </p>
-                        <p class="text-lg font-semibold tracking-wide">{{entry.sentiment}}</p>
-                    </div>
-
-                    <div class="w-full space-y-2"> 
-                        <p class="text-lg md:text-xl font-bold tracking-wide">Feedback: </p>
-                        <p class="text-md font-semibold">{{entry.feedback1}}</p>
-                        {% if entry.feedback2 %}
-                            <p class="text-md font-semibold">{{entry.feedback2}}</p>
-                        {% endif %}
-                        {% if entry.feedback3 %}
-                            <p class="text-md font-semibold">{{entry.feedback3}}</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+<body class="min-h-screen w-full bg-gradient-to-t from-[#071023] via-[#081128] to-[#0b1220] text-gray-200">
+  <!-- TOP NAVBAR (no routing on buttons) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f1a]/70 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- brand -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] shadow-lg">
+            <i class="fa-solid fa-money-bill-wave text-white text-lg"></i>
+          </div>
+          <div>
+            <span class="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-white">LocalReviews</span>
+            <div class="text-xs text-[rgba(255,255,255,0.65)] -mt-0.5">discover local businesses</div>
+          </div>
         </div>
-        {% endfor %}
+
+        <!-- nav links (decorative, no hrefs) -->
+        <nav class="hidden md:flex items-center gap-6">
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Explore</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Categories</button>
+          <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">About</button>
+        </nav>
+
+        <!-- right controls (no routing) -->
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] rounded-full px-3 py-1">
+            <i class="fa-solid fa-magnifying-glass text-[rgba(255,255,255,0.6)]"></i>
+            <input
+              type="search"
+              placeholder="Search businesses..."
+              class="ml-2 bg-transparent outline-none text-sm text-[rgba(255,255,255,0.9)] placeholder-[rgba(255,255,255,0.4)]"
+            />
+          </div>
+
+          <!-- login/logout button (decorative — no routing) -->
+          <div>
+            <button id="auth-btn" class="px-3 py-1.5 rounded-md bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] text-white text-sm font-medium shadow">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Add Review floating button (kept) -->
+  <div class="fixed bottom-6 right-6 z-40">
+    <button id="add-button" class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-t from-[#0f1724] to-[#141827] border border-[rgba(255,255,255,0.04)] shadow-lg">
+      <i class="fa-solid fa-circle-plus text-[#7fb1ff] text-lg"></i>
+      <span class="text-sm font-semibold text-[rgba(255,255,255,0.95)]">Add Review</span>
+    </button>
+  </div>
+
+  <!-- Overlay / form -->
+  <div id="overlay" class="fixed inset-0 bg-black/55 hidden items-center justify-center z-50">
+    <form id="review-form" method="post" class="w-[90%] max-w-md bg-[#071022] border border-[rgba(255,255,255,0.03)] rounded-2xl shadow-lg p-6 space-y-6">
+      {% csrf_token %}
+      <h2 class="text-2xl font-bold text-white text-center">Add a Review</h2>
+
+      <div>
+        <input type="text" name="review" id="add-review"
+               placeholder="Write your review here..."
+               class="w-full p-3 rounded-lg border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)] text-white focus:outline-none focus:ring-2 focus:ring-[#2d63ff]"
+               autocomplete="off" maxlength="512" required>
+      </div>
+
+      <div class="flex space-x-3">
+        <button id="submit-btn" type="submit" class="w-1/2 py-2 rounded-lg bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] text-white font-semibold">Submit</button>
+        <button id="back-btn" type="button" class="w-1/2 py-2 rounded-lg bg-[rgba(255,255,255,0.02)] text-white border border-[rgba(255,255,255,0.04)]">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Dashboard link (kept, unchanged) -->
+  <div class="fixed top-16 right-6">
+    <a href="{% url 'dashboard' company %}" class="inline-flex items-center text-[rgba(0,0,0,0.85)] bg-[#7fb1ff] px-3 py-2 rounded-md font-semibold hover:opacity-90">View Dashboard</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto mt-28 p-4 sm:p-6 md:p-8 space-y-8">
+    {% for entry in entries %}
+    <div class="w-full bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl p-4 space-y-4">
+      <!-- user logo + fancy name line: location icon left, script font name on right -->
+      <div class="flex items-center gap-4">
+        <img class="w-[50px] h-[50px] rounded-full object-cover" src="{% static 'reviews/images/default-user-icon.png' %}" alt="user">
+        <div class="flex-1 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <p class="text-xl sm:text-2xl md:text-3xl leading-none text-[#cfe7ff] tracking-wider" style="font-family: 'Pacifico', cursive;text-shadow: 0 6px 14px rgba(0,0,0,0.6);">
+              {{ entry.username }}
+            </p>
+          </div>
+          <!-- small meta / placeholder area (kept empty — no Django logic changed) -->
+          <div class="text-sm text-[rgba(255,255,255,0.6)]">
+            <!-- optional timestamp or metadata -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Review text -->
+      <div class="pt-2 space-y-2">
+        <p class="text-lg font-semibold text-white">Review:</p>
+        <p class="text-sm md:text-base text-[rgba(255,255,255,0.84)]">{{ entry.review }}</p>
+      </div>
+
+      <!-- Sentiment analysis area (buttons keep same ids) -->
+      <div class="pt-2 space-y-2">
+        <button id="show-analysis-btn-{{entry.id}}" onclick="showAnalysis({{entry.id}})" class="w-full text-[#7fb1ff] underline font-semibold text-left" type="button">Check Sentiment</button>
+        <button id="hide-analysis-btn-{{entry.id}}" class="w-full text-[#7fb1ff] underline hidden font-semibold text-left" type="button">Remove Analysis</button>
+
+        <div id="show-analysis-{{entry.id}}" class="w-full hidden flex-col md:flex-row pt-4 space-y-3 md:space-y-0">
+          <div class="w-full flex items-center gap-2">
+            <p class="text-lg font-bold text-white">Sentiment:</p>
+            <p class="text-lg font-semibold text-[rgba(255,255,255,0.9)]">{{ entry.sentiment }}</p>
+          </div>
+
+          <div class="w-full space-y-2">
+            {% if entry.feedback1 %}
+              <p class="text-lg font-bold text-white">Feedback:</p>
+              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback1 }}</p>
+            {% endif %}
+
+            {% if entry.feedback2 %}
+              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback2 }}</p>
+            {% endif %}
+
+            {% if entry.feedback3 %}
+              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback3 }}</p>
+            {% endif %}
             
-    </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </main>
+
+  <!-- Inlined JS (kept functionality identical, slightly more defensive) -->
+  <script>
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const addBtn = document.getElementById('add-button');
+    const overlay = document.getElementById('overlay');
+    const subBtn = document.getElementById('submit-btn');
+    const backBtn = document.getElementById('back-btn');
+    const form = document.getElementById('review-form');
+
+    // defensive helpers
+    function showElement(el){
+      if (!el) return;
+      el.classList.remove('hidden');
+      // prefer 'flex' for overlay and form-centering, but for blocks use 'block'
+      if (el.id === 'overlay') {
+        el.classList.add('flex');
+      } else {
+        el.classList.add('flex');
+      }
+    }
+
+    function hideElement(el){
+      if (!el) return;
+      el.classList.remove('flex');
+      el.classList.add('hidden');
+    }
+
+    if (addBtn) {
+      addBtn.addEventListener('click', () => {
+        showElement(overlay);
+        const input = document.getElementById('add-review');
+        if (input) input.value = '';
+      });
+    }
+
+    if (subBtn && form) {
+      subBtn.addEventListener('click', (e) => {
+        // keep original behavior: disable + submit
+        subBtn.disabled = true;
+        subBtn.textContent = 'Loading..';
+        form.submit();
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', () => {
+        hideElement(overlay);
+        if (subBtn) {
+          subBtn.disabled = false;
+          subBtn.textContent = 'Submit';
+        }
+      });
+    }
+
+    // showAnalysis implementation — identical behaviour, exposed globally
+    function showAnalysis(id){
+      try {
+        const showAnalysisBtn = document.getElementById(`show-analysis-btn-${id}`);
+        const hideAnalysisBtn = document.getElementById(`hide-analysis-btn-${id}`);
+        const showAnalysisDiv = document.getElementById(`show-analysis-${id}`);
+
+        if (showAnalysisBtn) hideElement(showAnalysisBtn);
+        if (hideAnalysisBtn) showElement(hideAnalysisBtn);
+        if (showAnalysisDiv) showElement(showAnalysisDiv);
+
+        if (hideAnalysisBtn) {
+          // remove previous handler to avoid duplicate binds
+          hideAnalysisBtn.replaceWith(hideAnalysisBtn.cloneNode(true));
+          const newHideBtn = document.getElementById(`hide-analysis-btn-${id}`);
+          if (newHideBtn) {
+            newHideBtn.addEventListener('click', () => {
+              if (showAnalysisDiv) hideElement(showAnalysisDiv);
+              if (newHideBtn) hideElement(newHideBtn);
+              if (showAnalysisBtn) showElement(showAnalysisBtn);
+            });
+          }
+        }
+      } catch (err) {
+        // fail silently to avoid breaking page
+        console.error('showAnalysis error', err);
+      }
+    }
+
+    // expose globally so inline onclick can call it (keeps existing HTML)
+    window.showAnalysis = showAnalysis;
+  });
+  </script>
 </body>
-<script src="{% static 'reviews/js/show_reviews.js' %}"></script>
 </html>
