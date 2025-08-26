@@ -54,7 +54,7 @@ def show_reviews(request, company):
 
         # sending user review to fastapi model server to get sentiment
         user_sentiment = requests.post(
-            'http://127.0.0.1:10000/sentiment',
+            'https://pick-recommendations-consultant-tray.trycloudflare.com/sentiment',
             json={'review':user_review}
         )
         sentiment = user_sentiment.json().get('sentiment', 'Error') 
@@ -64,7 +64,7 @@ def show_reviews(request, company):
         print(domain)
         print("SENDING FEEDBACK JSON:", {"review": user_review, "domain": domain})
         user_feedbacks = requests.post(
-            'http://127.0.0.1:10000/feedbacks',
+            'https://pick-recommendations-consultant-tray.trycloudflare.com/feedbacks',
             json={'review':user_review, 'domain': domain}
         )
         f1 = user_feedbacks.json().get('feedback1', 'Error')
