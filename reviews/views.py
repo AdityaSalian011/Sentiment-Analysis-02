@@ -61,8 +61,6 @@ def show_reviews(request, company):
         
         # sending user review to fastapi model server to get feedback
         domain = extract_domain_from_filename(company)
-        print(domain)
-        print("SENDING FEEDBACK JSON:", {"review": user_review, "domain": domain})
         user_feedbacks = requests.post(
             'https://pick-recommendations-consultant-tray.trycloudflare.com/feedbacks',
             json={'review':user_review, 'domain': domain}
@@ -70,7 +68,6 @@ def show_reviews(request, company):
         f1 = user_feedbacks.json().get('feedback1', 'Error')
         f2 = user_feedbacks.json().get('feedback2', 'Error')
         f3 = user_feedbacks.json().get('feedback3', 'Error')
-        print(f1, f2, f3)
 
         if form.is_valid():
             review = form.save(commit=False)
@@ -112,3 +109,21 @@ def extract_domain_from_filename(filename):
         if key in name.lower():
             return domain
     return 'general'
+
+def show_positive_reviews(request, company):
+    """A function which shows positive reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='positive').order_by
+
+    return render(request, 'reviews/pos_reviews.html', {'entries': entries})
+
+def show_negative_reviews(request, company):
+    """A function which shows negative reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='negative').order_by
+
+    return render(request, 'reviews/neg_reviews.html', {'entries': entries})
+
+def show_neutral_reviews(request, company):
+    """A function which shows neutral reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='neutral').order_by
+
+    return render(request, 'reviews/neu_reviews.html', {'entries': entries})
