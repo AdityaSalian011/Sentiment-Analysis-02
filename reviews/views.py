@@ -132,7 +132,7 @@ def extract_domain_from_filename(filename):
             return domain
     return 'general'
 
-<<<<<<< HEAD
+
 def show_positive_reviews(request, company):
     """A function which shows positive reviews for selected local business"""
     entries = Review.objects.filter(company=company, sentiment='positive').order_by
@@ -150,7 +150,7 @@ def show_neutral_reviews(request, company):
     entries = Review.objects.filter(company=company, sentiment='neutral').order_by
 
     return render(request, 'reviews/neu_reviews.html', {'entries': entries})
-=======
+
 def get_keywords(all_kws):
     all_sentiment_kws = []
     for str_kws in all_kws:
@@ -180,4 +180,4 @@ def get_file_path(company):
 
     file_path = company_ds.get(company.lower())
     return file_path
->>>>>>> 43188c4
+
