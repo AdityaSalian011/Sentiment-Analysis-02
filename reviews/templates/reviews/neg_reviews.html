@@ -55,7 +55,7 @@
 
         <!-- nav links (decorative, no hrefs) -->
         <nav class="hidden md:flex items-center gap-6">
-          <a href="{% url 'index' %}" class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</a>
+          <a href="{% url 'index' %}" class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</a> 
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Explore</button>
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Categories</button>
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">About</button>
@@ -80,50 +80,7 @@
       </div>
     </div>
   </header>
-
-  <!-- Add Review floating button (kept) -->
-  <div class="fixed bottom-6 right-6 z-40">
-    <button id="add-button" class="flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] text-white border-none hover:from-[#3f7fff] hover:to-[#7b5fff] shadow-lg">
-      <i class="fa-solid fa-circle-plus text-[#7fb1ff] text-lg"></i>
-      <span class="text-sm font-semibold text-[rgba(255,255,255,0.95)]">Add Review</span>
-    </button>
-  </div>
-
-  <!-- Overlay / form -->
-  <div id="overlay" class="fixed inset-0 bg-black/55 hidden items-center justify-center z-50">
-    <form id="review-form" method="post" class="w-[90%] max-w-md bg-[#eac086] border border-[#7b4b12] rounded-2xl shadow-lg p-6 space-y-6">
-      {% csrf_token %}
-      <h2 class="text-2xl sm:text-3xl font-bold text-[#7b4b12] text-center tracking-wide" style="font-family: 'Larken'">
-        Add a Review
-      </h2>
-
-      <div>
-        <input type="text" name="review" id="add-review"
-              placeholder="Write your review here..."
-              class="w-full p-3 rounded-lg border border-[#7b4b12] bg-[#d6a77a] text-[#5a3e1b] focus:outline-none focus:ring-2 focus:ring-[#7b4b12]"
-              autocomplete="off" maxlength="512" style="font-family: 'Frevent'" required>
-      </div>
-
-      <div class="flex space-x-3">
-        <!-- Warm gradient Submit button -->
-        <button id="submit-btn" type="submit" class="w-1/2 py-2 rounded-lg bg-gradient-to-br from-[#d9915b] to-[#c77b4b] text-white font-semibold hover:opacity-90 shadow-lg">
-          Submit
-        </button>
-
-        <!-- Cancel button -->
-        <button id="back-btn" type="button" class="w-1/2 py-2 rounded-lg bg-[#d6a77a] text-[#7b4b12] border border-[#7b4b12] font-semibold hover:bg-[#e0b36c]">
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-
-
-  <!-- Dashboard link (kept, unchanged) -->
-  <div class="fixed top-16 right-6 z-30">
-    <a href="{% url 'dashboard' company %}" class="inline-flex items-center text-white bg-gradient-to-br from-[#2d63ff] to-[#6b5cff] px-3 py-2 rounded-md font-semibold hover:opacity-90 shadow-md">View Dashboard</a>
-  </div>
-
+  <!-- MAIN CONTENT -->
   <!-- MAIN CONTENT -->
   <main class="max-w-7xl mx-auto mt-28 p-4 sm:p-6 md:p-8 space-y-8">
     {% for entry in entries %}
@@ -138,9 +95,7 @@
               {{ entry.username }}
             </p>
           </div>
-          <!-- small meta / placeholder area (kept empty — no Django logic changed) -->
           <div class="text-sm text-[rgba(255,255,255,0.6)]">
-            <!-- optional timestamp or metadata -->
           </div>
         </div>
       </div>
@@ -182,93 +137,59 @@
     </div>
     {% endfor %}
   </main>
-
-  <!-- Inlined JS (kept functionality identical, slightly more defensive) -->
   <script>
   document.addEventListener('DOMContentLoaded', ()=> {
-    const addBtn = document.getElementById('add-button');
-    const overlay = document.getElementById('overlay');
-    const subBtn = document.getElementById('submit-btn');
-    const backBtn = document.getElementById('back-btn');
-    const form = document.getElementById('review-form');
 
-    // defensive helpers
-    function showElement(el){
-      if (!el) return;
-      el.classList.remove('hidden');
-      // prefer 'flex' for overlay and form-centering, but for blocks use 'block'
-      if (el.id === 'overlay') {
-        el.classList.add('flex');
-      } else {
-        el.classList.add('flex');
-      }
-    }
-
-    function hideElement(el){
-      if (!el) return;
-      el.classList.remove('flex');
-      el.classList.add('hidden');
-    }
-
-    if (addBtn) {
-      addBtn.addEventListener('click', () => {
-        showElement(overlay);
-        const input = document.getElementById('add-review');
-        if (input) input.value = '';
-      });
-    }
-
-    if (subBtn && form) {
-      subBtn.addEventListener('click', (e) => {
-        // keep original behavior: disable + submit
-        subBtn.disabled = true;
-        subBtn.textContent = 'Loading..';
-        form.submit();
-      });
-    }
-
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        hideElement(overlay);
-        if (subBtn) {
-          subBtn.disabled = false;
-          subBtn.textContent = 'Submit';
+        // defensive helpers
+        function showElement(el){
+        if (!el) return;
+        el.classList.remove('hidden');
+        // prefer 'flex' for overlay and form-centering, but for blocks use 'block'
+        if (el.id === 'overlay') {
+            el.classList.add('flex');
+        } else {
+            el.classList.add('flex');
         }
-      });
-    }
-
-    // showAnalysis implementation — identical behaviour, exposed globally
-    function showAnalysis(id){
-      try {
-        const showAnalysisBtn = document.getElementById(`show-analysis-btn-${id}`);
-        const hideAnalysisBtn = document.getElementById(`hide-analysis-btn-${id}`);
-        const showAnalysisDiv = document.getElementById(`show-analysis-${id}`);
-
-        if (showAnalysisBtn) hideElement(showAnalysisBtn);
-        if (hideAnalysisBtn) showElement(hideAnalysisBtn);
-        if (showAnalysisDiv) showElement(showAnalysisDiv);
-
-        if (hideAnalysisBtn) {
-          // remove previous handler to avoid duplicate binds
-          hideAnalysisBtn.replaceWith(hideAnalysisBtn.cloneNode(true));
-          const newHideBtn = document.getElementById(`hide-analysis-btn-${id}`);
-          if (newHideBtn) {
-            newHideBtn.addEventListener('click', () => {
-              if (showAnalysisDiv) hideElement(showAnalysisDiv);
-              if (newHideBtn) hideElement(newHideBtn);
-              if (showAnalysisBtn) showElement(showAnalysisBtn);
-            });
-          }
         }
-      } catch (err) {
-        // fail silently to avoid breaking page
-        console.error('showAnalysis error', err);
-      }
-    }
 
-    // expose globally so inline onclick can call it (keeps existing HTML)
-    window.showAnalysis = showAnalysis;
-  });
+        function hideElement(el){
+        if (!el) return;
+        el.classList.remove('flex');
+        el.classList.add('hidden');
+        }
+        
+        // showAnalysis implementation — identical behaviour, exposed globally
+        function showAnalysis(id){
+        try {
+            const showAnalysisBtn = document.getElementById(`show-analysis-btn-${id}`);
+            const hideAnalysisBtn = document.getElementById(`hide-analysis-btn-${id}`);
+            const showAnalysisDiv = document.getElementById(`show-analysis-${id}`);
+
+            if (showAnalysisBtn) hideElement(showAnalysisBtn);
+            if (hideAnalysisBtn) showElement(hideAnalysisBtn);
+            if (showAnalysisDiv) showElement(showAnalysisDiv);
+
+            if (hideAnalysisBtn) {
+            // remove previous handler to avoid duplicate binds
+            hideAnalysisBtn.replaceWith(hideAnalysisBtn.cloneNode(true));
+            const newHideBtn = document.getElementById(`hide-analysis-btn-${id}`);
+            if (newHideBtn) {
+                newHideBtn.addEventListener('click', () => {
+                if (showAnalysisDiv) hideElement(showAnalysisDiv);
+                if (newHideBtn) hideElement(newHideBtn);
+                if (showAnalysisBtn) showElement(showAnalysisBtn);
+                });
+            }
+            }
+        } catch (err) {
+            // fail silently to avoid breaking page
+            console.error('showAnalysis error', err);
+        }
+        }
+
+        // expose globally so inline onclick can call it (keeps existing HTML)
+        window.showAnalysis = showAnalysis;
+    });
   </script>
 </body>
 </html>
