@@ -2,34 +2,22 @@ from django.shortcuts import render, HttpResponse, redirect
 import requests
 from .models import Review
 from .forms import ReviewForm
+from collections import Counter
 import pandas as pd
-import os
+import os, ast
 
 from django.db.models import Count, Q
 # Create your views here.
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-CSV_DIR = os.path.join(BASE_DIR, 'redefined_ds')
+CSV_DIR = os.path.join(BASE_DIR, 'review_ds')
 
 def index(request):
     return render(request, 'reviews/index.html')
 
 def show_reviews(request, company):
-    company_ds = {
-        'mamledar-misal-restaurant': os.path.join(CSV_DIR, 'mamledar-misal-restaurant.csv'),
-        'food-town-restaurant': os.path.join(CSV_DIR, 'food-town-restaurant.csv'),
-        'hotel-mavlan-restaurant': os.path.join(CSV_DIR, 'hotel-mavlan-restaurant.csv'),
-        'korum-mall': os.path.join(CSV_DIR, 'korum-mall.csv'),
-        'viviana-mall': os.path.join(CSV_DIR, 'viviana-mall.csv'),
-        'golds-gym': os.path.join(CSV_DIR, 'golds-gym.csv'),
-        'decathlon-sports': os.path.join(CSV_DIR, 'decathlon-sports.csv'),
-        'jupyter-hospital': os.path.join(CSV_DIR, 'jupyter-hospital.csv'),
-        'orchids-school': os.path.join(CSV_DIR, 'orchids-school.csv'),
-        'dnyansadhana-college': os.path.join(CSV_DIR, 'dnyansadhana-college.csv')
-    }
-
-    file_path = company_ds.get(company.lower())
+    file_path = get_file_path(company)
     if not file_path:
         return HttpResponse('Company Not Found!', status=404)
 
@@ -80,17 +68,51 @@ def show_reviews(request, company):
     else:
         form = ReviewForm()
     
-    entries = Review.objects.filter(company=company).order_by('-id')
+    entries = Review.objects.filter(company=company)
     return render(request, 'reviews/show_reviews.html', {'entries':entries, 'form':form, 'company': company})
 
 def show_dashboard(request, company):
+    file_path = get_file_path(company)
+    df = pd.read_csv(file_path)
+
     total_reviews = Review.objects.filter(company=company).aggregate(
         pos_reviews = Count('id', filter=Q(sentiment='positive')),
         neg_reviews = Count('id', filter=Q(sentiment='negative')),
         neutral_reviews = Count('id', filter=Q(sentiment='neutral'))
     )
 
-    return render(request, 'reviews/dashboard.html', {'total_reviews': total_reviews, 'company':company})
+    all_positive_kws = df['positive_kws'].dropna().tolist()
+    positive_kws = get_keywords(all_positive_kws)
+    top5_pos_kws = get_top5_kws(positive_kws)
+
+    all_negative_kws = df['negative_kws'].dropna().tolist()
+    negative_kws = get_keywords(all_negative_kws)
+    top5_neg_kws = get_top5_kws(negative_kws)
+
+    return render(request, 'reviews/dashboard.html', 
+                  {'total_reviews': total_reviews, 
+                   'company':company, 
+                   'top5_pos_kws': top5_pos_kws, 
+                   'top5_neg_kws': top5_neg_kws
+                   })
+
+def show_positive_reviews(request, company):
+    """A function which shows positive reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='positive')
+
+    return render(request, 'reviews/pos_reviews.html', {'entries': entries})
+
+def show_negative_reviews(request, company):
+    """A function which shows negative reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='negative')
+
+    return render(request, 'reviews/neg_reviews.html', {'entries': entries})
+
+def show_neutral_reviews(request, company):
+    """A function which shows neutral reviews for selected local business"""
+    entries = Review.objects.filter(company=company, sentiment='neutral')
+
+    return render(request, 'reviews/neu_reviews.html', {'entries': entries})
 
 # helper function
 def extract_domain_from_filename(filename):
@@ -110,6 +132,7 @@ def extract_domain_from_filename(filename):
             return domain
     return 'general'
 
+<<<<<<< HEAD
 def show_positive_reviews(request, company):
     """A function which shows positive reviews for selected local business"""
     entries = Review.objects.filter(company=company, sentiment='positive').order_by
@@ -127,3 +150,34 @@ def show_neutral_reviews(request, company):
     entries = Review.objects.filter(company=company, sentiment='neutral').order_by
 
     return render(request, 'reviews/neu_reviews.html', {'entries': entries})
+=======
+def get_keywords(all_kws):
+    all_sentiment_kws = []
+    for str_kws in all_kws:
+        str_kws = str_kws.replace('nan', 'None')
+        all_sentiment_kws.append(ast.literal_eval(str_kws))
+    
+    sentiment_kws = [kw for kws in all_sentiment_kws for kw in kws if pd.notna(kw)]
+    return sentiment_kws
+
+def get_top5_kws(sentiment_kws):
+    top5_kws = [kw for kw, _ in Counter(sentiment_kws).most_common(5)]
+    return top5_kws
+
+def get_file_path(company):
+    company_ds = {
+        'mamledar-misal-restaurant': os.path.join(CSV_DIR, 'mamledar-misal-restaurant.csv'),
+        'food-town-restaurant': os.path.join(CSV_DIR, 'food-town-restaurant.csv'),
+        'hotel-mavlan-restaurant': os.path.join(CSV_DIR, 'hotel-malvan-restaurant.csv'),
+        'korum-mall': os.path.join(CSV_DIR, 'korum-mall.csv'),
+        'viviana-mall': os.path.join(CSV_DIR, 'viviana-mall.csv'),
+        'golds-gym': os.path.join(CSV_DIR, 'golds-gym.csv'),
+        'decathlon-sports': os.path.join(CSV_DIR, 'decathlon-sports.csv'),
+        'jupyter-hospital': os.path.join(CSV_DIR, 'jupyter-hospital.csv'),
+        'orchids-school': os.path.join(CSV_DIR, 'orchids-school.csv'),
+        'dnyansadhana-college': os.path.join(CSV_DIR, 'dnyansadhana-college.csv')
+    }
+
+    file_path = company_ds.get(company.lower())
+    return file_path
+>>>>>>> 43188c4
