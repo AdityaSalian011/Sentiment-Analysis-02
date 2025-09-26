@@ -9,7 +9,6 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Script-style font (for the username/company name) -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -21,15 +20,6 @@
     crossorigin="anonymous" 
     referrerpolicy="no-referrer" 
   />
-<<<<<<< HEAD
-
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
-</head>
-
-<body class="min-h-screen w-full bg-gradient-to-t from-[#071023] via-[#081128] to-[#0b1220] text-gray-200">
-=======
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
@@ -47,7 +37,6 @@
 </head>
 
 <body class="min-h-screen w-full bg-[#d6a77a] text-gray-800">
->>>>>>> 43188c4
   <!-- TOP NAVBAR (no routing on buttons) -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f1a]/70 backdrop-blur-sm border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +54,7 @@
 
         <!-- nav links (decorative, no hrefs) -->
         <nav class="hidden md:flex items-center gap-6">
-          <a href="{% url 'index' %}" class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</a> 
+          <a href="{% url 'index' %}" class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Home</a>
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Explore</button>
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">Categories</button>
           <button class="text-sm font-medium text-[rgba(255,255,255,0.9)] hover:text-[#7fb1ff] transition">About</button>
@@ -91,24 +80,6 @@
     </div>
   </header>
   <!-- MAIN CONTENT -->
-<<<<<<< HEAD
-  <main class="max-w-7xl mx-auto mt-28 p-4 sm:p-6 md:p-8 space-y-8">
-    {% for entry in entries %}
-    <div class="w-full bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)] rounded-2xl p-4 space-y-4">
-      <!-- user logo + fancy name line: location icon left, script font name on right -->
-      <div class="flex items-center gap-4">
-        <i class="fa-solid fa-user text-2xl rounded-full bg-gray-200 p-2"></i>
-        <div class="flex-1 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <p class="text-xl sm:text-2xl md:text-3xl leading-none text-[#cfe7ff] tracking-wider" style="font-family: 'Pacifico', cursive;text-shadow: 0 6px 14px rgba(0,0,0,0.6);">
-              {{ entry.username }}
-            </p>
-          </div>
-          <!-- small meta / placeholder area (kept empty — no Django logic changed) -->
-          <div class="text-sm text-[rgba(255,255,255,0.6)]">
-            <!-- optional timestamp or metadata -->
-=======
-  <!-- MAIN CONTENT -->
   <main class="max-w-7xl mx-auto mt-28 p-4 sm:p-6 md:p-8 space-y-8">
     {% for entry in entries %}
     <div class="w-full bg-[#eac086] border border-[rgba(255,255,255,0.08)] rounded-2xl cursor-pointer px-6 
@@ -122,34 +93,17 @@
               {{ entry.username }}
             </p>
           </div>
-          <div class="text-sm text-[rgba(255,255,255,0.6)]">
->>>>>>> 43188c4
-          </div>
         </div>
       </div>
 
       <!-- Review text -->
       <div class="pt-2 space-y-2">
-<<<<<<< HEAD
-        <p class="text-lg font-semibold text-white">Review:</p>
-        <p class="text-sm md:text-base text-[rgba(255,255,255,0.84)]">{{ entry.review }}</p>
-=======
         <p class="text-lg font-semibold text-[#5a3e1b]" style="font-family: 'Frevent'">Review:</p>
         <p class="text-sm md:text-base text-[#5a3e1b]" style="font-family: 'Frevent'">{{ entry.review }}</p>
->>>>>>> 43188c4
       </div>
 
       <!-- Sentiment analysis area (buttons keep same ids) -->
       <div class="pt-2 space-y-2">
-<<<<<<< HEAD
-        <button id="show-analysis-btn-{{entry.id}}" onclick="showAnalysis({{entry.id}})" class="w-full text-[#7fb1ff] underline font-semibold text-left" type="button">Check Sentiment</button>
-        <button id="hide-analysis-btn-{{entry.id}}" class="w-full text-[#7fb1ff] underline hidden font-semibold text-left" type="button">Remove Analysis</button>
-
-        <div id="show-analysis-{{entry.id}}" class="w-full hidden flex-col md:flex-row pt-4 space-y-3 md:space-y-0">
-          <div class="w-full flex items-center gap-2">
-            <p class="text-lg font-bold text-white">Sentiment:</p>
-            <p class="text-lg font-semibold text-[rgba(255,255,255,0.9)]">{{ entry.sentiment }}</p>
-=======
         <button id="show-analysis-btn-{{entry.id}}" onclick="showAnalysis({{entry.id}})" class="w-full text-[#2f2f2f] underline font-semibold text-left" type="button">Show Analysis</button>
         <button id="hide-analysis-btn-{{entry.id}}" class="w-full text-[#2f2f2f] underline hidden font-semibold text-left" type="button">Remove Analysis</button>
 
@@ -157,23 +111,10 @@
           <div class="w-full flex items-center gap-2">
             <p class="text-lg font-bold text-[#5a3e1b]" style="font-family: 'Frevent'">Sentiment:</p>
             <p class="text-lg font-semibold text-[#5a3e1b]" style="font-family: 'Frevent'">{{ entry.sentiment }}</p>
->>>>>>> 43188c4
           </div>
 
           <div class="w-full space-y-2">
             {% if entry.feedback1 %}
-<<<<<<< HEAD
-              <p class="text-lg font-bold text-white">Feedback:</p>
-              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback1 }}</p>
-            {% endif %}
-
-            {% if entry.feedback2 %}
-              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback2 }}</p>
-            {% endif %}
-
-            {% if entry.feedback3 %}
-              <p class="text-md font-semibold text-[rgba(255,255,255,0.92)]">{{ entry.feedback3 }}</p>
-=======
               <p class="text-lg font-bold text-[#5a3e1b]" style="font-family: 'Frevent'">Summary:</p>
               <p class="text-md font-semibold text-[#5a3e1b]" style="font-family: 'Frevent'">{{ entry.feedback1 }}</p>
             {% endif %}
@@ -184,7 +125,6 @@
 
             {% if entry.feedback3 %}
               <p class="text-md font-semibold text-[#5a3e1b]" style="font-family: 'Frevent'">{{ entry.feedback3 }}</p>
->>>>>>> 43188c4
             {% endif %}
             
           </div>

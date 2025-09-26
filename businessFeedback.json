@@ -1,0 +1,62 @@
+[
+    {
+        "decathlon-sports": {
+            "pos_feedback": "Decathlon Sports offers top-notch quality products and exceptional customer service, making it a standout choice among local sports stores due to its knowledgeable and helpful staff.",
+            "neg_feedback": "Decathlon Sports, despite its small shop size and costly cricket equipment, struggles with teenage staff who often struggle to manage inventory and payment issues due to their lack of experience and training. To improve, Decathlon Sports should invest in employee training programs and consider hiring more experienced staff to better handle the demands"
+        }
+    },
+    {
+        "dnyansadhana-college": {
+            "pos_feedback": "Dnyansadhana College offers an excellent education supported by helpful staff, experienced faculty, and modern facilities, making it a top choice among students and parents alike.",
+            "neg_feedback": null
+        }
+    },
+    {
+        "food-town-restaurant": {
+            "pos_feedback": "Food Town Restaurant offers delicious, tasty, and quickly served meals in a nice ambiance, earning high praise from locals for its excellent service.",
+            "neg_feedback": "Food Town Restaurant serves half-cooked meals with tiny portions, leaving customers unsatisfied; they should improve cooking times and increase serving sizes to enhance customer experience."
+        }
+    },
+    {
+        "golds-gym": {
+            "pos_feedback": "Golds Gym offers a clean, well-equipped, motivating atmosphere, and helpful trainers that make your workout experience truly enjoyable.",
+            "neg_feedback": "Golds Gym needs to address its poor hygiene, inadequate maintenance, staff negligence, and incompetent trainers to improve its reputation and attract more members."
+        }
+    },
+    {
+        "hotel-malvan-restaurant": {
+            "pos_feedback": "Hotel Malvan Restaurant offers delicious, authentic, and high-quality food along with excellent service, making it a standout choice among local eateries.",
+            "neg_feedback": "Hotel Malvan Restaurant needs to address its unfriendly and rude staff, poor service, unsafe environment, and lack of hygiene to improve customer satisfaction and trust."
+        }
+    },
+    {
+        "jupyter-hospital": {
+            "pos_feedback": "Jupyter Hospital offers top-notch medical services with its highly skilled doctors, courteous staff, and exceptional patient care, making it a standout choice among local healthcare providers.",
+            "neg_feedback": "Jupyter Hospital offers subpar care due to its long wait times, unresponsive staff, and poor communication, leading to a disappointing patient experience that needs urgent improvement."
+        }
+    },
+    {
+        "korum-mall": {
+            "pos_feedback": "Korum Mall offers excellent dining, shopping, and events, along with ample parking and diverse food choices, making it a standout local destination.",
+            "neg_feedback": "Korum Mall's poor AC, stinky food, and dirty mall need urgent attention; consider hiring more efficient cleaners, improving ventilation, and training staff to provide better service. Korum Mall needs immediate action to address its cleanliness, air quality, and staff behavior for a positive experience. Korum Mall"
+        }
+    },
+    {
+        "mamledar-misal-restaurant": {
+            "pos_feedback": "Mamledar Misal Restaurant offers delicious, high-quality food with excellent service, despite occasional long wait times.",
+            "neg_feedback": "Mamledar Misal Restaurant serves overpriced, bland food with poor hygiene; improve quality, reduce prices, and ensure cleanliness for better service."
+        }
+    },
+    {
+        "viviana-mall": {
+            "pos_feedback": "Viviana Mall offers a variety of stores, is family-friendly, has a large mall with many stores, good parking, and is highly praised by locals.",
+            "neg_feedback": "Viviana Mall's declining service, poor facilities, and unresponsive management reflect a need for improved staff training, enhanced cleanliness, and more effective communication to address customer concerns and foster a better shopping experience."
+        }
+    },
+    {
+        "orchids-school": {
+            "pos_feedback": "Orchids School offers top-notch education with friendly, dedicated, and excellent teachers who work cooperatively to create an exceptional learning environment.",
+            "neg_feedback": "Orchids School needs to address its unprofessional teaching, inexperienced teachers, poor administrative, and fake information to improve its educational quality and reputation."
+        }
+    }
+]

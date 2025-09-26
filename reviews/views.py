@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-import requests
+import requests, json
 from .models import Review
 from .forms import ReviewForm
 from collections import Counter
@@ -12,6 +12,7 @@ from django.db.models import Count, Q
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CSV_DIR = os.path.join(BASE_DIR, 'review_ds')
+JSON_DIR = os.path.join(BASE_DIR, 'businessFeedback.json')
 
 def index(request):
     return render(request, 'reviews/index.html')
@@ -36,40 +37,40 @@ def show_reviews(request, company):
         )
 
     ## adding new reviews
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        user_review = request.POST.get('review')
+    # if request.method == 'POST':
+    #     form = ReviewForm(request.POST)
+    #     user_review = request.POST.get('review')
 
-        # sending user review to fastapi model server to get sentiment
-        user_sentiment = requests.post(
-            'https://pick-recommendations-consultant-tray.trycloudflare.com/sentiment',
-            json={'review':user_review}
-        )
-        sentiment = user_sentiment.json().get('sentiment', 'Error') 
+    #     # sending user review to fastapi model server to get sentiment
+    #     user_sentiment = requests.post(
+    #         'https://pick-recommendations-consultant-tray.trycloudflare.com/sentiment',
+    #         json={'review':user_review}
+    #     )
+    #     sentiment = user_sentiment.json().get('sentiment', 'Error') 
         
-        # sending user review to fastapi model server to get feedback
-        domain = extract_domain_from_filename(company)
-        user_feedbacks = requests.post(
-            'https://pick-recommendations-consultant-tray.trycloudflare.com/feedbacks',
-            json={'review':user_review, 'domain': domain}
-        )
-        f1 = user_feedbacks.json().get('feedback1', 'Error')
-        f2 = user_feedbacks.json().get('feedback2', 'Error')
-        f3 = user_feedbacks.json().get('feedback3', 'Error')
+    #     # sending user review to fastapi model server to get feedback
+    #     domain = extract_domain_from_filename(company)
+    #     user_feedbacks = requests.post(
+    #         'https://pick-recommendations-consultant-tray.trycloudflare.com/feedbacks',
+    #         json={'review':user_review, 'domain': domain}
+    #     )
+    #     f1 = user_feedbacks.json().get('feedback1', 'Error')
+    #     f2 = user_feedbacks.json().get('feedback2', 'Error')
+    #     f3 = user_feedbacks.json().get('feedback3', 'Error')
 
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.company = company
-            review.username = 'You'
-            review.sentiment = sentiment
-            review.feedback1, review.feedback2, review.feedback3 = f1, f2, f3
-            review.save()
-            return redirect('reviews', company=company)
-    else:
-        form = ReviewForm()
+    #     if form.is_valid():
+    #         review = form.save(commit=False)
+    #         review.company = company
+    #         review.username = 'You'
+    #         review.sentiment = sentiment
+    #         review.feedback1, review.feedback2, review.feedback3 = f1, f2, f3
+    #         review.save()
+    #         return redirect('reviews', company=company)
+    # else:
+    #     form = ReviewForm()
     
     entries = Review.objects.filter(company=company)
-    return render(request, 'reviews/show_reviews.html', {'entries':entries, 'form':form, 'company': company})
+    return render(request, 'reviews/show_reviews.html', {'entries':entries, 'company': company})
 
 def show_dashboard(request, company):
     file_path = get_file_path(company)
@@ -89,30 +90,19 @@ def show_dashboard(request, company):
     negative_kws = get_keywords(all_negative_kws)
     top5_neg_kws = get_top5_kws(negative_kws)
 
+    pos_feedback, neg_feedback = get_json_data(company)
+
+    company_name = company.replace("-", " ").title()
+
     return render(request, 'reviews/dashboard.html', 
                   {'total_reviews': total_reviews, 
                    'company':company, 
+                   'company_name': company_name,
                    'top5_pos_kws': top5_pos_kws, 
-                   'top5_neg_kws': top5_neg_kws
+                   'top5_neg_kws': top5_neg_kws,
+                   'pos_feedback': pos_feedback,
+                   'neg_feedback': neg_feedback
                    })
-
-def show_positive_reviews(request, company):
-    """A function which shows positive reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='positive')
-
-    return render(request, 'reviews/pos_reviews.html', {'entries': entries})
-
-def show_negative_reviews(request, company):
-    """A function which shows negative reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='negative')
-
-    return render(request, 'reviews/neg_reviews.html', {'entries': entries})
-
-def show_neutral_reviews(request, company):
-    """A function which shows neutral reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='neutral')
-
-    return render(request, 'reviews/neu_reviews.html', {'entries': entries})
 
 # helper function
 def extract_domain_from_filename(filename):
@@ -132,22 +122,23 @@ def extract_domain_from_filename(filename):
             return domain
     return 'general'
 
-
 def show_positive_reviews(request, company):
     """A function which shows positive reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='positive').order_by
+    entries = Review.objects.filter(company=company, sentiment='positive')
+    pos_feedback, _ = get_json_data(company)
 
-    return render(request, 'reviews/pos_reviews.html', {'entries': entries})
+    return render(request, 'reviews/pos_reviews.html', {'entries': entries, 'pos_feedback': pos_feedback})
 
 def show_negative_reviews(request, company):
     """A function which shows negative reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='negative').order_by
+    entries = Review.objects.filter(company=company, sentiment='negative')
+    _, neg_feedback = get_json_data(company)
 
-    return render(request, 'reviews/neg_reviews.html', {'entries': entries})
+    return render(request, 'reviews/neg_reviews.html', {'entries': entries, 'neg_feedback': neg_feedback})
 
 def show_neutral_reviews(request, company):
     """A function which shows neutral reviews for selected local business"""
-    entries = Review.objects.filter(company=company, sentiment='neutral').order_by
+    entries = Review.objects.filter(company=company, sentiment='neutral')
 
     return render(request, 'reviews/neu_reviews.html', {'entries': entries})
 
@@ -168,7 +159,7 @@ def get_file_path(company):
     company_ds = {
         'mamledar-misal-restaurant': os.path.join(CSV_DIR, 'mamledar-misal-restaurant.csv'),
         'food-town-restaurant': os.path.join(CSV_DIR, 'food-town-restaurant.csv'),
-        'hotel-mavlan-restaurant': os.path.join(CSV_DIR, 'hotel-malvan-restaurant.csv'),
+        'hotel-malvan-restaurant': os.path.join(CSV_DIR, 'hotel-malvan-restaurant.csv'),
         'korum-mall': os.path.join(CSV_DIR, 'korum-mall.csv'),
         'viviana-mall': os.path.join(CSV_DIR, 'viviana-mall.csv'),
         'golds-gym': os.path.join(CSV_DIR, 'golds-gym.csv'),
@@ -177,7 +168,21 @@ def get_file_path(company):
         'orchids-school': os.path.join(CSV_DIR, 'orchids-school.csv'),
         'dnyansadhana-college': os.path.join(CSV_DIR, 'dnyansadhana-college.csv')
     }
-
+    
     file_path = company_ds.get(company.lower())
     return file_path
 
+def get_json_data(company, file_path=JSON_DIR):
+    with open(file_path, 'r', encoding='utf-8') as json_file:
+        company_feedbacks = json.loads(json_file.read())
+    
+    pos_feedback = None
+    neg_feedback = None
+
+    for company_feedback in company_feedbacks:
+        if company in list(company_feedback.keys()):
+            pos_feedback = company_feedback[company]['pos_feedback']
+            neg_feedback = company_feedback[company]['neg_feedback']
+
+    
+    return pos_feedback, neg_feedback
